@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeaderNew from '../components/HeaderNew';
+import HeroNew from '../components/HeroNew';
+import LogoCarousel from '../components/LogoCarousel';
+import WhySarvamSection from '../components/WhySarvamSection';
+import StackLayersNew from '../components/StackLayersNew';
+import PlaygroundShowcase from '../components/PlaygroundShowcase';
+import SecuritySection from '../components/SecuritySection';
+import ApiFeaturesSection from '../components/ApiFeaturesSection';
+import TestimonialSection from '../components/TestimonialSection';
+import ResearchUpdatesSection from '../components/ResearchUpdatesSection';
+import FinalCTA from '../components/FinalCTA';
+import FooterNew from '../components/FooterNew';
+---
+
+<Layout title="Sarvam AI | India's Full-Stack Sovereign AI Platform">
+  <HeaderNew client:load />
+  
+  <main class="z-100 flex-1 bg-[#fafafa] relative flex flex-col" style="font-family: Matter, sans-serif;">
+    <div class="flex flex-col gap-32 md:gap-56 mx-auto w-full overflow-x-clip">
+      <HeroNew client:load />
+      <LogoCarousel client:load />
+      
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <WhySarvamSection client:load />
+      </section>
+      
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <StackLayersNew client:load />
+      </section>
+      
+      {/* Playground / See it in action */}
+      <section class="relative mx-auto w-full">
+        <PlaygroundShowcase client:load />
+      </section>
+      
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <SecuritySection client:load />
+      </section>
+      
+      {/* API Features / Built to run anywhere */}
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <ApiFeaturesSection client:load />
+      </section>
+      
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <TestimonialSection client:load />
+      </section>
+      
+      {/* Research & Updates */}
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <ResearchUpdatesSection client:load />
+      </section>
+      
+      <section class="relative mx-auto mb-10 md:mb-0 w-[85%] md:w-9/12 max-w-[1400px]">
+        <FinalCTA client:load />
+      </section>
+    </div>
+  </main>
+  
+  <FooterNew client:load />
+</Layout>
+
+<style>
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+</style>
