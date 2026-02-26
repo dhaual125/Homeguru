@@ -56,14 +56,14 @@ export default function WhySarvamSection() {
         </h2>
       </div>
 
-      <div data-animate className="flex md:flex-row flex-col gap-3 bg-white p-4 md:p-6 rounded-[24px] md:rounded-[48px] w-full overflow-hidden border border-st-secondary">
-        <div className="relative rounded-2xl w-full md:w-[50%] h-[250px] md:h-[420px] overflow-hidden shrink-0">
+      <div data-animate className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-4 md:p-6 rounded-[24px] md:rounded-[48px] w-full overflow-hidden border border-st-secondary">
+        <div className="relative rounded-2xl w-full h-[250px] md:h-full min-h-[420px] overflow-hidden shrink-0">
           <img
-            src="https://assets.sarvam.ai/tr:f-auto/assets/home/why-sarvam-bg.png"
+            src="https://assets.sarvam.ai/tr:f-auto/assets/companyLogos/home-section-2.webp"
             alt="Sarvam AI Platform"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 flex justify-center items-center mix-blend-overlay">
+          <div className="absolute inset-0 flex justify-center items-center">
             <motion.img
               src="https://assets.sarvam.ai/assets/svgs/sarvam-logo-white.svg"
               alt=""
