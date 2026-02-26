@@ -1181,3 +1181,19 @@
 .animate-\[shimmer_3s_ease-in-out_infinite_1\.5s\] {
   animation: shimmer 3s ease-in-out infinite 1.5s;
 }
+@media (min-width: 768px) {
+  .md\:gap-16 { gap: 4rem; }
+  .md\:text-\[42px\] { font-size: 42px; }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:p-6 { padding: 1.5rem; }
+  .md\:rounded-\[48px\] { border-radius: 48px; }
+  .md\:h-full { height: 100%; }
+  .md\:mb-36 { margin-bottom: 9rem; }
+  .md\:w-24 { width: 6rem; }
+  .md\:justify-between { justify-content: space-between; }
+  .md\:gap-0 { gap: 0; }
+  .md\:px-12 { padding-left: 3rem; padding-right: 3rem; }
+  .md\:py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .md\:text-\[22px\] { font-size: 22px; }
+}
+
