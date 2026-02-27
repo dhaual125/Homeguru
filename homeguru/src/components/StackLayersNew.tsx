@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 const WebGLBackground = ({ progress }: { progress: number }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number>(undefined);
@@ -108,22 +107,25 @@ export default function StackLayersNew() {
 
   const layers = [
     {
-      id: "apps",
-      title: "Population-scale Applications",
-      description: "Agents for specific sectors like healthcare, law, and education.",
-      tags: ["Conversational AI", "Multilingual Support", "Enterprise Ready"]
+      id: "register",
+      title: "Register & Set Your Goals",
+      description: "The student registers on the platform and fills in their learning goals, what they want to learn, their level, and schedule preferences.",
+      tags: ["Quick Sign Up", "Learning Goals", "Personalised Profile"],
+      image: "/step-1.png"
     },
     {
-      id: "models",
-      title: "State-of-the-art Models",
-      description: "Bulbul, Saaras, and Akshar models optimized for Indian context.",
-      tags: ["High Performance", "Cost Effective", "Sovereign Data"]
+      id: "match",
+      title: "Browse, Match & Schedule a Demo",
+      description: "Browse tutors or choose AI matchmaking to find the right Guru. Send a demo request and schedule a free trial session.",
+      tags: ["AI Matchmaking", "Free Demo", "Tutor Profiles"],
+      image: "/step-2.png"
     },
     {
-      id: "infra",
-      title: "Sovereign Infrastructure",
-      description: "Token Factory and specialized compute for India's AI independence.",
-      tags: ["Data Privacy", "GPU Optimization", "Local Hosting"]
+      id: "start",
+      title: "Confirm & Start Learning",
+      description: "After the demo, confirm your tutor, make the payment, and regular 1 on 1 classes begin. Learn at your pace, on your schedule.",
+      tags: ["Secure Payment", "Regular Classes", "1 on 1 Sessions"],
+      image: "/step-3.png"
     }
   ];
 
@@ -198,38 +200,34 @@ export default function StackLayersNew() {
       <div ref={pinRef} className="flex flex-col items-center gap-12 md:gap-16 py-20">
         <div className="flex flex-col items-center gap-4">
           <p className="font-matter font-medium text-tx-tertiary text-xs text-center uppercase tracking-[2px]">
-            The sovereign stack
+            Your Learning Journey
           </p>
           <div className="text-center">
             <h2 className="font-season-mix text-3xl md:text-[42px] leading-[1.2] text-tx">
-              From compute to conversation
+              Everything you need to succeed
             </h2>
           </div>
         </div>
 
         <div className="flex md:flex-row flex-col items-stretch w-full max-w-[1280px] mx-auto px-4">
-          <div className="relative border border-st rounded-[48px] w-full md:w-1/2 h-[320px] md:h-[480px] overflow-hidden">
-            <WebGLBackground progress={progress} />
-            <div className="absolute inset-0 flex justify-center items-center" style={{ perspective: '900px' }}>
-              {layers.map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute"
+          <div className="relative border border-st rounded-[48px] w-full md:w-1/2 h-[320px] md:h-[480px] overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+            {layers.map((layer, i) => {
+              const activeIndex = Math.round(progress * (layers.length - 1));
+              const isActive = activeIndex === i;
+              return (
+                <img
+                  key={layer.id}
+                  src={layer.image}
+                  alt={layer.title}
+                  className="absolute inset-0 w-full h-full object-contain p-6"
                   style={{
-                    width: '280px',
-                    height: '280px',
-                    borderRadius: '22px',
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.12) 100%)',
-                    backdropFilter: 'blur(16px) saturate(1.4)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 12px rgba(0,0,0,0.06)',
-                    transform: `translateY(${(progress * (layers.length - 1) - i) * 60}px) rotateX(55deg) rotateZ(-45deg)`,
-                    opacity: 1 - Math.abs(progress * (layers.length - 1) - i) * 0.5,
-                    display: Math.abs(progress * (layers.length - 1) - i) > 1.2 ? 'none' : 'block'
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(20px)',
+                    transition: 'opacity 0.6s ease, transform 0.6s ease',
                   }}
                 />
-              ))}
-            </div>
+              );
+            })}
           </div>
 
           <div ref={textRef} className="relative w-full md:w-1/2 min-h-[350px] md:min-h-0">

@@ -3,24 +3,24 @@ import { useState } from 'react';
 const samvaadMotifs = [
     {
         src: "https://assets.sarvam.ai/assets/product-samvaad/products/samvaad-motif-01.svg",
-        type: "Cart Recovery"
+        type: "Mathematics"
     },
     {
         src: "https://assets.sarvam.ai/assets/product-samvaad/products/samvaad-motif-02.svg",
-        type: "Appointment Booking"
+        type: "Science"
     },
     {
         src: "https://assets.sarvam.ai/assets/product-samvaad/products/samvaad-motif-03.svg",
-        type: "Payment follow-ups"
+        type: "English"
     }
 ];
 
 const tabs = [
-    "Conversational Agents",
-    "Text to Speech",
-    "Speech to Text",
-    "Vision",
-    "Dubbing"
+    "School Subjects",
+    "Coding & AI",
+    "Music & Dance",
+    "Languages",
+    "Competitive Exams"
 ];
 
 export default function PlaygroundShowcase() {
@@ -41,7 +41,7 @@ export default function PlaygroundShowcase() {
                 {/* Section Heading */}
                 <div className="flex flex-col items-center text-center gap-6 w-full">
                     <h2 className="font-season-mix text-3xl md:text-[42px] text-tx leading-[1.2]">
-                        See it in action
+                        Explore Our Subjects
                     </h2>
                 </div>
 
@@ -68,7 +68,7 @@ export default function PlaygroundShowcase() {
                         {/* Box Header */}
                         <div className="flex justify-between items-center px-8 md:px-12 py-6 md:py-8 border-b border-st-secondary">
                             <h3 className="font-matter text-xl md:text-[22px] text-tx-secondary">
-                                {activeTab === 0 ? 'Experience Samvaad' : `Experience ${tabs[activeTab]}`}
+                                {activeTab === 0 ? 'Popular School Subjects' : `Explore ${tabs[activeTab]}`}
                             </h3>
                             <div className="flex items-center gap-2">
                                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
@@ -100,7 +100,7 @@ export default function PlaygroundShowcase() {
                                                         boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
                                                     }}
                                                 >
-                                                    Start Speaking
+                                                    Start Learning
                                                 </button>
                                             </div>
                                             <span className="font-matter font-medium text-lg md:text-xl text-tx-secondary text-center">

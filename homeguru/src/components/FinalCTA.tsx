@@ -19,7 +19,7 @@ export default function FinalCTA() {
         <div className="relative z-10 flex flex-col items-center gap-12 w-full max-w-[800px]">
           <div className="flex flex-col items-center">
             <h3 className="font-season-mix text-white md:text-[32px] text-2xl text-center leading-normal">
-              Build the future of India's AI <br className="hidden md:block" /> with Sarvam.
+              Ready To Start?
             </h3>
           </div>
 

@@ -2,7 +2,7 @@ export default function TestimonialSection() {
   return (
     <section className="flex flex-col gap-10 md:gap-12">
       <h2 className="text-3xl md:text-[36px] text-center leading-[135%]" style={{fontFamily: 'Season Mix'}}>
-        What our customers say
+        Real Stories
       </h2>
 
       <div className="flex flex-col gap-8 w-full">
@@ -14,7 +14,7 @@ export default function TestimonialSection() {
               className="w-auto h-7 object-contain"
             />
             <p className="text-[#1a1a1a] text-xl md:text-xl leading-[160%]" style={{fontFamily: 'Matter'}}>
-              Our partnership with Sarvam has enabled us to scale highly personalized, product and segment-specific conversations across the customer lifecycle. By embedding multilingual interactions across our consumer loan products, we are reaching more customers with greater relevance, breaking access barriers, and deepening engagement in a cost-effective manner.
+              HomeGuru transformed my learning experience. The 1:1 attention from my Guru helped me improve my grades significantly. The platform is easy to use and the Gurus are highly qualified.
             </p>
           </div>
 
@@ -27,16 +27,16 @@ export default function TestimonialSection() {
               />
               <div className="flex flex-col gap-1">
                 <p className="font-medium text-[16px] text-[#1a1a1a] leading-normal" style={{fontFamily: 'Matter'}}>
-                  Shallu Kaushik
+                  Sarah Johnson
                 </p>
                 <p className="text-[14px] text-[#999] leading-normal" style={{fontFamily: 'Matter'}}>
-                  Chief Digital Officer, Tata Capital
+                  Student, Grade 10
                 </p>
               </div>
             </div>
-            <a href="/stories/tata-capital-ai-voice-transformation">
+            <a href="#testimonials">
               <button className="relative inline-flex items-center justify-center cursor-pointer font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 px-5 py-3 text-base bg-[#fafafa] text-black shadow-[inset_0_0_12px_rgba(0,0,0,0.09),0px_0px_1px_rgba(0,0,0,0.2)] group w-full md:w-auto" style={{fontFamily: 'Season Mix'}}>
-                <span className="z-10 relative flex items-center gap-2">Read case study</span>
+                <span className="z-10 relative flex items-center gap-2">View more stories</span>
               </button>
             </a>
           </div>

@@ -1,17 +1,18 @@
 export default function SecuritySection() {
   const badges = [
-    { label: 'ISO:27001', icon: 'https://assets.sarvam.ai/tr:f-auto/assets/misc/sec-iso.png' },
-    { label: 'AICPA SOC 2', icon: 'https://assets.sarvam.ai/tr:f-auto/assets/misc/sec-soc2.png' },
-    { label: 'India Data Residency', icon: null }
+    { label: 'Get students directly', icon: null },
+    { label: 'Flexible teaching hours', icon: null },
+    { label: 'On-time payments', icon: null },
+    { label: 'Global reach', icon: null }
   ];
 
   return (
     <section className="flex flex-col items-center gap-12 md:gap-16">
       <h2 className="font-season-mix text-3xl md:text-[36px] text-center leading-[135%] text-tx">
-        Enterprise-grade security. Built in from day one.
+        Teach. Earn. Grow.
       </h2>
 
-      <div className="flex md:flex-row flex-wrap justify-center items-center gap-8 md:gap-20 mx-auto w-full">
+      <div className="flex md:flex-row flex-wrap justify-center items-center gap-8 md:gap-12 mx-auto w-full">
         {badges.map((badge, i) => (
           <div key={i} className="flex flex-col items-center gap-4 w-[200px] md:w-[250px]">
             <div

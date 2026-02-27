@@ -8,19 +8,19 @@ export default function WhySarvamSection() {
 
   const features = [
     {
-      id: "sovereign",
-      title: "Sovereign by design",
-      description: "Build, deploy, and run AI with full control, developed and operated entirely in India."
+      id: "attention",
+      title: "1:1 Dedicated Attention",
+      description: "Personalized learning experience tailored to your unique goals and pace."
     },
     {
-      id: "models",
-      title: "State of the art Models",
-      description: "Industry-leading models built for India's languages, culture, and context."
+      id: "Gurus",
+      title: "Verified Gurus",
+      description: "Learn from qualified and experienced Gurus from around the world."
     },
     {
-      id: "human",
-      title: "Human at the core",
-      description: "Forward deployed engineers work alongside your teams to deliver production-ready agents."
+      id: "flexible",
+      title: "Flexible Scheduling",
+      description: "Book sessions that fit your schedule, anytime, anywhere."
     }
   ];
 
@@ -52,7 +52,7 @@ export default function WhySarvamSection() {
     <div ref={sectionRef} className="flex flex-col items-center gap-8 md:gap-16">
       <div data-animate className="flex flex-col items-center text-center gap-6 w-full">
         <h2 className="font-season-mix text-3xl md:text-[42px] leading-[1.2] text-tx">
-          Powering India's AI-first future
+          Not Just Guruing. Personalised Learning.
         </h2>
       </div>
 

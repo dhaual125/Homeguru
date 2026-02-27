@@ -1,24 +1,24 @@
 export default function ResearchUpdatesSection() {
     const blogs = [
         {
-            title: "Introducing Indus",
-            date: "February 20, 2026",
-            category: "COMPANY",
-            link: "/blogs/introducing-indus",
+            title: "Expanding to UAE",
+            date: "March 15, 2025",
+            category: "EXPANSION",
+            link: "#",
             image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/a781d0105845e4e9b69bf336b842cc8964f38929-1008x630.png?w=800"
         },
         {
-            title: "Introducing Sarvam Akshar",
-            date: "February 15, 2026",
-            category: "COMPANY",
-            link: "/blogs/sarvam-akshar",
+            title: "Now in United Kingdom",
+            date: "March 10, 2025",
+            category: "EXPANSION",
+            link: "#",
             image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/fff4fe106a03242dec49bd27025e1b55a51de0b9-1800x1350.png?w=800"
         },
         {
-            title: "Announcing Sarvam Edge",
-            date: "February 14, 2026",
-            category: "COMPANY",
-            link: "/blogs/sarvam-edge",
+            title: "Launching in United States",
+            date: "March 5, 2025",
+            category: "EXPANSION",
+            link: "#",
             image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/42d675e333219227dd0a6872d6405088722eb6e1-2400x1800.png?w=800"
         }
     ];
@@ -28,7 +28,7 @@ export default function ResearchUpdatesSection() {
             {/* Section Heading */}
             <div className="flex flex-col items-center text-center gap-6 w-full">
                 <h2 className="font-season-mix text-3xl md:text-[42px] text-tx leading-[1.2]">
-                    Research & Updates
+                    Learning Has No Borders.
                 </h2>
             </div>
 
@@ -66,11 +66,11 @@ export default function ResearchUpdatesSection() {
             </div>
 
             {/* View All Button */}
-            <a href="/blogs">
+            <a href="#global">
                 <button className="relative inline-flex items-center justify-center cursor-pointer font-season-mix font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 active:duration-200 touch-manipulation px-8 py-4 text-lg bg-sf text-black shadow-[inset_0_0_12px_rgba(0,0,0,0.09),0px_0px_1px_rgba(0,0,0,0.2)] group">
                     <span className="absolute inset-0 opacity-0 rounded-full transition-opacity duration-700 bg-gradient-to-r from-[#A5BBFC] via-[#D5E2FF] to-[#FFA133] group-hover:opacity-100 group-active:opacity-100 shadow-[inset_0_0_12px_2px_rgba(255,255,255,1)]" aria-hidden="true" />
                     <span className="z-10 relative flex items-center gap-2 transition-all duration-500">
-                        View all blogs
+                        Explore All Regions
                     </span>
                 </button>
             </a>

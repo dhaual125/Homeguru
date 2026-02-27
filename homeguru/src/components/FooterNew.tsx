@@ -6,76 +6,50 @@ export default function FooterNew() {
           <div className="flex flex-col gap-6 md:gap-6">
             <div className="flex flex-col gap-[12px]">
               <a className="flex items-center" href="/">
-                <img
-                  src="https://assets.sarvam.ai/assets/svgs/sarvam-wordmark-black.svg"
-                  alt="Sarvam AI"
-                  className="w-[202px] h-[32px]"
-                />
+                <span className="text-2xl font-bold text-gray-900">HomeGuru</span>
               </a>
               <p className="font-matter font-medium text-[#666] text-[14px] leading-[12px]">
-                AI for India starts here
+                Born in India. Built for the World
               </p>
             </div>
             <div className="flex gap-[12px]">
-              <div className="flex justify-center items-center bg-[#fafafa] rounded-[16px] w-[64px] h-[64px] overflow-hidden">
-                <img
-                  src="https://assets.sarvam.ai/tr:f-auto/assets/misc/sec-iso.png"
-                  alt="ISO Certified"
-                  className="w-[40px] h-[40px] object-contain"
-                />
-              </div>
-              <div className="flex justify-center items-center bg-[#fafafa] rounded-[16px] w-[64px] h-[64px] overflow-hidden">
-                <img
-                  src="https://assets.sarvam.ai/tr:f-auto/assets/misc/sec-soc2.png"
-                  alt="SOC 2 Type II"
-                  className="w-[40px] h-[40px] object-contain"
-                />
-              </div>
             </div>
           </div>
           <div className="justify-center gap-12 md:gap-8 lg:gap-16 grid grid-cols-2 md:grid-cols-4 w-full">
             <div className="flex flex-col gap-[24px] w-fit">
               <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                Products
+                Learn
               </h3>
               <ul className="flex flex-col gap-3 w-fit font-matter">
                 <li className="w-fit">
                   <a
-                    href="/products/conversational-agents"
+                    href="#subjects"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                   >
-                    Sarvam Samvaad
+                    Explore Subjects
+                  </a>
+                </li>
+                <li className="w-fit">
+                  <a
+                    href="#Gurus"
+                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
+                  >
+                    Find a Guru
                   </a>
                 </li>
               </ul>
             </div>
             <div className="flex flex-col gap-[24px] w-fit">
               <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                API
+                Teach
               </h3>
               <ul className="flex flex-col gap-3 w-fit font-matter">
                 <li className="w-fit">
                   <a
-                    href="/apis/text-to-speech"
+                    href="#become-Guru"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                   >
-                    Text to Speech
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/apis/speech-to-text"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Speech to Text
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/api-pricing"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    API Pricing
+                    Join as a Guru
                   </a>
                 </li>
               </ul>
@@ -90,35 +64,31 @@ export default function FooterNew() {
                     href="/about-us"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                   >
-                    About us
+                    About
                   </a>
                 </li>
                 <li className="w-fit">
                   <a
-                    href="/blogs"
+                    href="/careers"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Blogs
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/community"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Discord
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="https://careers.kula.ai/sarvam-ai"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     Careers
+                  </a>
+                </li>
+                <li className="w-fit">
+                  <a
+                    href="/contact"
+                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li className="w-fit">
+                  <a
+                    href="/support"
+                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
+                  >
+                    Support
                   </a>
                 </li>
                 <li className="w-fit">
@@ -126,7 +96,7 @@ export default function FooterNew() {
                     href="/terms-of-use"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                   >
-                    Terms of service
+                    Terms & Conditions
                   </a>
                 </li>
                 <li className="w-fit">
@@ -180,8 +150,8 @@ export default function FooterNew() {
         </div>
       </div>
       <div className="bottom-0 left-1/2 z-10 md:absolute relative flex md:flex-row flex-col justify-between items-center gap-3 mx-auto md:p-16 2xl:px-0 py-4 w-full max-w-width-mx font-matter text-[#666] text-[12px] text-center leading-[1.5] -translate-x-1/2">
-        <span>Copyright Sarvam AI 2026</span>
-        <span>All rights reserved, Bengaluru- 560038</span>
+        <span>Copyright HomeGuru 2025</span>
+        <span>All rights reserved</span>
       </div>
       <div className="absolute inset-0 flex flex-col justify-end items-center mx-auto w-full max-w-width-mx h-full">
         <div

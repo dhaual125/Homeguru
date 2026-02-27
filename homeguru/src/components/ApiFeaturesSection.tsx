@@ -43,34 +43,34 @@ export default function ApiFeaturesSection() {
 
     const deploymentOptions = [
         {
-            id: "sarvam-cloud",
-            title: "Sarvam Cloud",
-            description: "Fully managed, automatic scaling, fastest time-to-value",
+            id: "dashboard",
+            title: "Student Dashboard UI",
+            description: "Track your progress, manage sessions, and access learning materials",
             image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-01.png"
         },
         {
-            id: "private-cloud",
-            title: "Private Cloud (VPC)",
-            description: "Your security perimeter, our management",
+            id: "live-class",
+            title: "Live Class Interface",
+            description: "Interactive whiteboard, screen sharing, and real-time collaboration",
             image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-02.png"
         },
         {
-            id: "on-premises",
-            title: "On-Premises",
-            description: "Full control, air-gapped for regulated industries",
+            id: "progress",
+            title: "Progress Tracking System",
+            description: "Monitor your learning journey with detailed analytics and insights",
             image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-03.png"
         }
     ];
 
     const developerFeatures = [
         {
-            id: "api-first",
-            title: "API-first architecture",
-            description: "Integrate SOTA models with a single line of code. Built for high-throughput and low-latency production use-cases.",
+            id: "chat-notes",
+            title: "Chat & Notes System",
+            description: "Communicate with your Guru, share files, and take notes during sessions. Everything you need in one place.",
             subItems: [
-                { title: "RESTful endpoints" },
-                { title: "SDKs for Python and JS" },
-                { title: "Comprehensive documentation" }
+                { title: "Real-time messaging" },
+                { title: "File sharing & resources" },
+                { title: "Session recordings" }
             ]
         }
     ];
@@ -79,7 +79,7 @@ export default function ApiFeaturesSection() {
         <section className="flex flex-col items-center gap-12 md:gap-20 py-20 px-4 max-w-[1280px] mx-auto w-full">
             <div className="flex flex-col items-center text-center gap-6 w-full">
                 <h2 className="font-season-mix text-3xl md:text-[42px] text-tx leading-[1.2]">
-                    Made for developers.<br className="hidden md:block" /> Scales for enterprises.
+                    Built For Serious Learners.
                 </h2>
             </div>
 
