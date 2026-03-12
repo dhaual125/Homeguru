@@ -117,7 +117,7 @@ export default function HeroNew() {
             </div>
 
             {/* CTA buttons */}
-            <div ref={ctaRef} className="flex flex-row gap-4 mt-8 mb-6">
+            <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 mb-6 w-full sm:w-auto items-center">
               <a href="#find-tutor" aria-label="Find Your Tutor">
                 <button className="inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-6 py-3 text-base bg-[#131313] text-white transition-opacity duration-200 hover:opacity-75 active:scale-95">
                   Find Your Tutor
@@ -151,36 +151,36 @@ export default function HeroNew() {
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
-          paddingTop: '80px',
+          paddingTop: 'clamp(20px, 5vw, 80px)',
           perspective: '1200px',
           perspectiveOrigin: '50% 0%',
         }}
       >
         <div style={{ width: '90%', maxWidth: '820px' }}>
-        <FollowerPointerCard title="Homeguru Student Dashboard">
-          <div
-            ref={parallaxCardRef}
-            style={{
-              position: 'relative',
-              width: '100%',
-              borderRadius: '16px',
-              border: '4px solid rgb(79,79,79)',
-              overflow: 'hidden',
-              boxShadow:
-                '0 40px 80px -20px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)',
-              background: '#fff',
-              transform: 'perspective(1200px) rotateX(18deg)',
-              transformOrigin: '50% 0%',
-              willChange: 'transform',
-            }}
-          >
-            <img
-              src="/stud-dash.png"
-              alt="Homeguru Student Dashboard"
-              style={{ display: 'block', width: '100%', height: 'auto' }}
-            />
-          </div>
-        </FollowerPointerCard>
+          <FollowerPointerCard title="Homeguru Student Dashboard">
+            <div
+              ref={parallaxCardRef}
+              style={{
+                position: 'relative',
+                width: '100%',
+                borderRadius: '16px',
+                border: '4px solid rgb(79,79,79)',
+                overflow: 'hidden',
+                boxShadow:
+                  '0 40px 80px -20px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06)',
+                background: '#fff',
+                transform: 'perspective(1200px) rotateX(18deg)',
+                transformOrigin: '50% 0%',
+                willChange: 'transform',
+              }}
+            >
+              <img
+                src="/stud-dash.png"
+                alt="Homeguru Student Dashboard"
+                style={{ display: 'block', width: '100%', height: 'auto' }}
+              />
+            </div>
+          </FollowerPointerCard>
         </div>
       </div>
 

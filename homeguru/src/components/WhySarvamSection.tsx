@@ -1,21 +1,33 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Lightning, Brain, BookOpen, ChatCircle } from "@phosphor-icons/react";
+import { Lightning, Brain, BookOpen } from "@phosphor-icons/react";
 
 const features = [
   {
-    title: "Instant Session Insights",
-    desc: "Automated recaps with key takeaways, focused review points, and timestamped navigation to jump directly to the most important parts of your lesson."
-  },
-  {
+    icon: Lightning,
+    label: "01",
     title: "Osmium AI Predictive Testing",
     titleJsx: <><span style={{ color: '#F97316' }}>Osmium AI</span> Predictive Testing</>,
-    desc: "96B parameter LLM built for education — predicts exam patterns, generates adaptive micro-quizzes, and aligns practice with JEE, NEET, CLAT, and more."
+    desc: "96B parameter LLM built for education — predicts exam patterns, generates adaptive micro-quizzes, and aligns practice with JEE, NEET, CLAT, and more.",
   },
   {
-    title: "Beyond the Syllabus",
-    desc: "Explore 100+ non-academic subjects for brain breaks, complement studies with Vedic Math, Music, or Yoga, and see how lessons connect to global career paths."
+    icon: Brain,
+    label: "02",
+    title: "Real-time Doubt Resolution",
+    desc: "Ask any question mid-session and get instant, contextual answers powered by AI — so learning never stops.",
   },
+  {
+    icon: BookOpen,
+    label: "03",
+    title: "Smart Revision Schedules",
+    desc: "Explore 100+ subjects with AI-curated revision plans. From Vedic Math to Music — every session builds toward mastery.",
+  },
+];
+
+const stats = [
+  { value: "98%", label: "Recall rate" },
+  { value: "3×", label: "Faster review" },
+  { value: "24/7", label: "Available" },
 ];
 
 export default function WhySarvamSection() {
@@ -58,88 +70,122 @@ export default function WhySarvamSection() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-6 md:gap-8">
-      <div className="flex flex-col items-center text-center gap-4 w-full">
-        <h2 className="font-season-mix text-3xl md:text-[42px] leading-[1.2] text-tx">
-          Save <span style={{ color: '#F97316' }}>hours</span>, learn <span style={{ color: '#312E81' }}>smarter</span>.
+    <div className="flex flex-col items-center gap-8 md:gap-12">
+
+      {/* Section header */}
+      <div className="flex flex-col items-center text-center gap-4 w-full max-w-2xl">
+        <h2 className="font-season-mix text-4xl md:text-[52px] leading-[1.1] tracking-tight text-[#111]">
+          Save <span style={{ color: '#F97316' }}>hours</span>,<br className="hidden sm:block" /> learn <span style={{ color: '#312E81' }}>smarter</span>.
         </h2>
-        <p className="font-matter text-[#6d6d6d] text-base md:text-lg max-w-xl leading-relaxed">
+        <p className="font-matter text-[#888] text-base md:text-lg leading-relaxed">
           From key takeaways to specific questions, we've got you covered.
         </p>
       </div>
 
-      {/* Main Feature Card */}
+      {/* ── Main Feature Card ── */}
       <div
         ref={cardRef}
-        className="w-full rounded-[32px] border border-[#e7e7e7] bg-[#f6f6f6] overflow-hidden"
+        className="w-full overflow-hidden"
+        style={{ borderRadius: '32px', border: '1px solid #E7E7E7', background: '#F6F6F6' }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '600px' }}>
-          {/* Left: text */}
-          <div className="flex flex-col gap-5 p-10 md:p-16 justify-between pt-12 md:pt-16">
-            <div className="flex flex-col gap-5">
-              <span className="inline-flex items-center justify-center gap-2 w-fit px-3 py-1.5 rounded-full bg-orange-500 border border-orange-500">
-                <span className="font-matter text-xs font-medium text-black uppercase tracking-wide">AI-Powered</span>
-              </span>
-              <h3 className="font-season-mix font-semibold text-[#121212] text-2xl md:text-3xl leading-snug">
-                Instant Session Insights
-              </h3>
-              <ChatCircle size={28} weight="regular" />
-              <p className="font-season-mix text-[#6d6d6d] text-lg md:text-xl leading-relaxed" style={{ fontWeight: 400 }}>
-                Automated recaps with key takeaways, focused review points, and timestamped navigation to jump directly to the most important parts of your lesson.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '520px' }}>
+
+          {/* Left: content */}
+          <div className="flex flex-col justify-between gap-8 p-8 md:p-12 lg:p-16">
             <div className="flex flex-col gap-6">
-              <div className="flex gap-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">98%</span>
-                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Recall rate</span>
-                </div>
-                <div className="w-px bg-[#e7e7e7]" />
-                <div className="flex flex-col gap-1">
-                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">3×</span>
-                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Faster review</span>
-                </div>
-                <div className="w-px bg-[#e7e7e7]" />
-                <div className="flex flex-col gap-1">
-                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">24/7</span>
-                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Available</span>
-                </div>
+              {/* Badge */}
+              <span className="inline-flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-full text-xs font-semibold font-matter uppercase tracking-widest"
+                style={{ background: 'rgba(249,115,22,0.1)', color: '#F97316', border: '1px solid rgba(249,115,22,0.2)' }}>
+                ✦ AI-Powered
+              </span>
+
+              <div className="flex flex-col gap-3">
+                <h3 className="font-season-mix text-[28px] md:text-[36px] text-[#111] leading-[1.15] tracking-tight">
+                  Instant Session Insights
+                </h3>
+                <p className="font-matter text-[#666] text-base md:text-lg leading-relaxed max-w-md">
+                  Automated recaps with key takeaways, focused review points, and timestamped navigation to jump directly to the most important parts of your lesson.
+                </p>
               </div>
-              <a href="#" className="w-fit">
-                <button className="inline-flex items-center gap-2 font-matter font-medium text-sm px-5 py-2.5 rounded-full bg-[#131313] text-white hover:opacity-80 transition-opacity">
-                  See how it works →
+            </div>
+
+            {/* Stats row */}
+            <div className="flex flex-col gap-6">
+              <div className="flex gap-0">
+                {stats.map((s, i) => (
+                  <div key={i} className="flex flex-col gap-1 pr-8 mr-8" style={{ borderRight: i < stats.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
+                    <span className="font-season-mix text-[32px] md:text-[38px] text-[#111] leading-none tracking-tight">{s.value}</span>
+                    <span className="font-matter text-[11px] uppercase tracking-[2px] text-[#999]">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href="#" className="w-fit group">
+                <button className="inline-flex items-center gap-2 font-matter font-medium text-sm px-5 py-2.5 rounded-full bg-[#111] text-white transition-all duration-200 group-hover:bg-[#333]">
+                  See how it works
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M1 11L11 1M11 1H4M11 1V8" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
               </a>
             </div>
           </div>
 
-          {/* Right: image flush to edges */}
-          <div className="relative overflow-hidden" style={{ minHeight: '600px', borderRadius: '24px' }}>
+          {/* Right: image with parallax */}
+          <div className="relative overflow-hidden" style={{ minHeight: '400px' }}>
             <img
               ref={imgRef as any}
               src="/videocall.png"
-              alt="Demo"
-              style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', willChange: 'transform', transformOrigin: 'bottom right' }}
+              alt="Live tutoring session"
+              style={{
+                position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,
+                width: '100%', height: '100%',
+                objectFit: 'cover', objectPosition: 'center',
+                willChange: 'transform', transformOrigin: 'bottom right'
+              }}
             />
           </div>
         </div>
       </div>
 
-      {/* 3-card grid */}
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '16px', width: '100%', flexWrap: 'wrap' }}>
-        {features.map((f, i) => (
-          <div key={i} style={{ flex: '1 1 260px', display: 'flex', flexDirection: 'column', gap: '24px', padding: '32px', borderRadius: '24px', backgroundColor: '#f6f6f6' }}>
-            <div style={{ width: '28px', height: '28px', color: '#121212' }}>
-              {i === 0 && <Lightning size={28} weight="regular" />}
-              {i === 1 && <Brain size={28} weight="regular" />}
-              {i === 2 && <BookOpen size={28} weight="regular" />}
+      {/* ── 3 Feature Cards ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
+        {features.map((f, i) => {
+          const Icon = f.icon;
+          return (
+            <div
+              key={i}
+              className="group flex flex-col gap-5 p-6 rounded-[24px] transition-all duration-300"
+              style={{ background: '#F6F6F6', border: '1px solid #EBEBEB' }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = '#fff';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(0,0,0,0.06)';
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = '#F6F6F6';
+                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+              }}
+            >
+              {/* Icon + number */}
+              <div className="flex items-center justify-between">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: '#111' }}>
+                  <Icon size={18} color="white" weight="bold" />
+                </div>
+                <span className="font-matter text-[11px] font-semibold text-[#CCC] tracking-widest">{f.label}</span>
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col gap-2">
+                <h4 className="font-season-mix text-[18px] text-[#111] leading-[1.3]">
+                  {(f as any).titleJsx ?? f.title}
+                </h4>
+                <p className="font-matter text-[13px] text-[#888] leading-relaxed">{f.desc}</p>
+              </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <h3 style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, color: '#121212', fontSize: '18px', lineHeight: '1.4', margin: 0 }}>{(f as any).titleJsx ?? f.title}</h3>
-              <p style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, color: '#6d6d6d', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>{f.desc}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

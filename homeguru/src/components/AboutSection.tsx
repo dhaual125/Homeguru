@@ -12,7 +12,7 @@ export default function AboutSection() {
         <section className="relative w-full flex flex-col gap-16" id="about">
 
             {/* Top split: headline left, body right */}
-            <div className="flex flex-col md:flex-row gap-12 md:gap-20 items-start">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
                 <div className="flex flex-col gap-5 flex-1">
                     <span className="font-matter text-[11px] font-semibold tracking-[4px] uppercase text-gray-400">
                         About <span style={{ color: '#312E81' }}>Home</span><span style={{ color: '#F97316' }}>Guru</span>
@@ -23,7 +23,7 @@ export default function AboutSection() {
                     </h2>
                 </div>
                 <div className="flex flex-col gap-6 flex-1 md:pt-14">
-                    <p className="font-matter text-gray-500 text-lg leading-[1.75]">
+                    <p className="font-matter text-[#555] text-lg md:text-xl leading-[1.8]">
                         HomeGuru connects students with the world's best tutors — for any subject, any level, any goal. Built for serious learners who want real results.
                     </p>
                     <a href="#find-tutor" className="inline-flex items-center gap-2 font-matter font-semibold text-black text-sm group w-fit">
@@ -33,18 +33,18 @@ export default function AboutSection() {
                 </div>
             </div>
 
-            {/* Stats row — refined, clean, horizontal */}
-            <div className="flex flex-row items-center divide-x divide-gray-100">
+            {/* Stats row — responsive grid */}
+            <div className="grid grid-cols-2 md:flex md:flex-row md:items-center md:divide-x md:divide-gray-100 gap-4 md:gap-0">
                 {stats.map((s) => (
-                    <div key={s.label} className="flex flex-col gap-1 px-10 first:pl-0">
+                    <div key={s.label} className="flex flex-col gap-1 md:px-10 md:first:pl-0">
                         <span className="font-season-mix text-[28px] text-black leading-none tracking-tight">{s.value}</span>
                         <span className="font-matter text-xs text-gray-400 leading-snug">{s.label}</span>
                     </div>
                 ))}
             </div>
 
-            {/* Pillars — monochromatic, always horizontal */}
-            <div className="flex flex-row gap-4 w-full">
+            {/* Pillars — stack on mobile, row on md+ */}
+            <div className="flex flex-col md:flex-row gap-4 w-full">
 
                 {/* Card 1 */}
                 <div className="relative flex flex-col justify-between p-8 rounded-[28px] overflow-hidden flex-1" style={{ background: '#F8F9FA', border: '1px solid #E5E7EB', minHeight: '300px' }}>

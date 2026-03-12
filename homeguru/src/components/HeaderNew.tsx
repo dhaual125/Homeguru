@@ -20,25 +20,11 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 right-0 left-0 z-[10000] w-full">
-      {/* Powered by Osmium AI Bar */}
-      <div
-        className="relative flex justify-center items-center h-8 overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 40%, #312E81 100%)' }}
-      >
-        {/* Subtle animated shimmer */}
-        <div
-          style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%)',
-            animation: 'shimmer 4s ease-in-out infinite',
-          }}
-          aria-hidden="true"
-        />
-        <div className="relative z-10 flex items-center">
-          <span className="font-matter font-medium text-white/80 text-[13px] tracking-wide">
-            Powered by <span style={{ color: '#A5B4FC', fontWeight: 600 }}>Osmium AI</span>
-          </span>
-        </div>
+      {/* Announcement bar — clean minimal */}
+      <div className="relative flex justify-center items-center h-7 overflow-hidden" style={{ background: '#fff', borderBottom: '1px solid #f0f0f0' }}>
+        <span className="font-matter text-[11px] font-medium tracking-[0.5px]" style={{ color: '#888' }}>
+          Powered by <span style={{ color: '#F97316', fontWeight: 600 }}>Osmium AI</span> — India's first AI tutoring intelligence
+        </span>
       </div>
 
       {/* Main Navigation */}

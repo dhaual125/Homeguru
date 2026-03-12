@@ -34,9 +34,9 @@ export default function FAQSection() {
 
   return (
     <section className="flex flex-col items-center gap-12 md:gap-16 w-full">
-      <div className="flex flex-col md:flex-row gap-12 md:gap-16 w-full items-start">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 w-full items-start">
         {/* Left: heading */}
-        <div className="flex flex-col gap-4 md:w-2/5 md:sticky md:top-32">
+        <div className="flex flex-col gap-4 lg:w-2/5 lg:sticky lg:top-32">
           <div className="flex items-center gap-2 border border-gray-200 bg-white shadow-sm rounded-full px-3 py-1.5 w-fit">
             <div className="flex items-center justify-center rounded w-4 h-4 text-[10px] font-bold text-white" style={{ backgroundColor: '#F97316' }}>?</div>
             <span className="font-matter font-medium text-gray-500 text-xs tracking-wide">FAQs</span>

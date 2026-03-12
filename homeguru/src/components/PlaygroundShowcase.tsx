@@ -12,22 +12,14 @@ const tabs = [
     "Coding & AI",
     "Music & Dance",
     "Languages",
-    "Competitive Exams"
+    "Exams"
 ];
 
 export default function PlaygroundShowcase() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <section className="relative w-full overflow-x-clip py-20 md:py-32">
-            {/* Background Gradient */}
-            <div
-                className="absolute bottom-[15%] left-0 right-0 h-2/5 blur-[80px] pointer-events-none opacity-50"
-                style={{
-                    transform: 'scaleX(2.5) scaleY(1.2)',
-                    background: 'linear-gradient(180deg, #C7D2FE 0%, #A5B4FC 30%, #818CF8 50%, #A5B4FC 70%, #C7D2FE 100%)'
-                }}
-            />
+        <section className="relative w-full py-20 md:py-32">
 
             <div className="relative flex flex-col items-center gap-12 md:gap-16 mx-auto w-[90%] md:w-9/12 max-w-[1400px]">
                 {/* Section Heading */}
@@ -46,16 +38,17 @@ export default function PlaygroundShowcase() {
 
                 {/* Tabs Container */}
                 <div className="flex flex-col gap-8 w-full">
-                    {/* Main Tabs */}
-                    <div className="flex flex-wrap justify-center gap-4">
+                    {/* Main Tabs — single row, no wrap */}
+                    <div className="flex flex-nowrap justify-center gap-2 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
                         {tabs.map((tab, i) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(i)}
-                                className={`px-6 py-3 rounded-full font-matter font-medium text-base md:text-lg transition-all duration-300 cursor-pointer ${activeTab === i
-                                    ? 'bg-sr-indigo-50 text-sr-indigo-900 shadow-[inset_0_0_12px_rgba(199,210,254,0.8)]'
-                                    : 'bg-white/50 text-tx-tertiary hover:text-tx-secondary hover:bg-white/80'
-                                    }`}
+                                className="shrink-0 px-5 py-2.5 rounded-full font-matter font-medium text-sm transition-all duration-250 cursor-pointer whitespace-nowrap"
+                                style={activeTab === i
+                                    ? { background: '#111', color: '#fff', border: '1px solid #111' }
+                                    : { background: '#fff', color: '#6B7280', border: '1px solid #E5E7EB' }
+                                }
                             >
                                 {tab}
                             </button>
@@ -78,7 +71,7 @@ export default function PlaygroundShowcase() {
                         </div>
 
                         {/* Box Body */}
-                        <div className="p-6 md:p-10">
+                        <div className="p-4 md:p-10">
                             {activeTab === 0 ? (
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                                     {samvaadMotifs.map((motif, i) => (
