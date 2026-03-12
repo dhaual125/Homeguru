@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const smoothScrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -64,26 +68,28 @@ export default function Header() {
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex flex-2 justify-center items-center gap-4">
-              {['Explore Subjects', 'Become a Tutor', 'About'].map((item) => (
-                <div key={item} className="relative group">
-                  <button className="flex items-center gap-1.5 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-black/5">
-                    <span className="font-medium text-xs uppercase tracking-[1px] font-matter text-black">{item}</span>
-                  </button>
+              {[{ label: 'Explore Subjects', href: '#' }, { label: 'Become a Tutor', href: '#become-tutor' }, { label: 'About', href: '#about' }].map(({ label, href }) => (
+                <div key={label} className="relative group">
+                  <a
+                    href={href}
+                    onClick={label === 'About' ? (e) => { e.preventDefault(); smoothScrollTo('about'); } : label === 'Become a Tutor' ? (e) => { e.preventDefault(); smoothScrollTo('become-tutor'); } : undefined}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-black/5"
+                  >
+                    <span className="font-medium text-xs uppercase tracking-[1px] font-matter text-black">{label}</span>
+                  </a>
                 </div>
               ))}
             </div>
 
             <div className="hidden md:flex flex-1 justify-end items-center gap-3">
               <a href="https://dashboard.sarvam.ai/">
-                <button className="relative inline-flex items-center justify-center cursor-pointer font-season-mix font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 active:duration-200 touch-manipulation px-5 py-3 text-base bg-[#131313] text-white shadow-[inset_0_0_12px_rgba(255,255,255,1),0px_0px_2px_0_rgba(0,0,0,0.1)] group w-fit text-nowrap">
-                  <span className="absolute inset-0 opacity-0 transition-opacity duration-700 bg-[linear-gradient(90deg,#131313_0%,#0A2156_33%,#BED2FF_66%,#FF8717_100%)] group-hover:opacity-100 group-active:opacity-100 rounded-full shadow-[inset_0px_0px_12px_2px_rgba(255,255,255,0.5)]" style={{ backgroundPosition: '50% 0%', backgroundSize: '200% 100%' }} aria-hidden="true"></span>
-                  <span className="z-10 relative flex items-center gap-2 transition-all duration-500">Get Started</span>
+                <button className="inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#131313] text-white transition-opacity duration-200 hover:opacity-80 active:scale-95">
+                  Get Started
                 </button>
               </a>
               <a href="/contact-us">
-                <button className="relative inline-flex items-center justify-center cursor-pointer font-season-mix font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 active:duration-200 touch-manipulation px-5 py-3 text-base bg-sf text-black shadow-[inset_0_0_12px_rgba(0,0,0,0.09),0px_0px_1px_rgba(0,0,0,0.2)] group w-fit text-nowrap">
-                  <span className="absolute inset-0 opacity-0 rounded-full transition-opacity duration-700 bg-gradient-to-r from-[#A5BBFC] via-[#D5E2FF] to-[#FFA133] group-hover:opacity-100 group-active:opacity-100 shadow-[inset_0_0_12px_2px_rgba(255,255,255,1)]" style={{ backgroundPosition: '50% 0%', backgroundSize: '200% 100%' }} aria-hidden="true"></span>
-                  <span className="z-10 relative flex items-center gap-2 transition-all duration-500">Login</span>
+                <button className="inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#f0f0f0] text-black border border-black transition-opacity duration-200 hover:opacity-80 active:scale-95">
+                  Login
                 </button>
               </a>
             </div>
@@ -110,22 +116,25 @@ export default function Header() {
                 className="lg:hidden bg-white/95 backdrop-blur-lg border-t border-gray-100"
               >
                 <div className="p-6 space-y-4">
-                  {['Explore Subjects', 'Become a Tutor', 'About'].map((item) => (
-                    <a key={item} href="#" className="block py-2 font-matter font-medium text-sm uppercase tracking-[1px] text-black">
-                      {item}
+                  {[{ label: 'Explore Subjects', href: '#' }, { label: 'Become a Tutor', href: '#become-tutor' }, { label: 'About', href: '#about' }].map(({ label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      onClick={label === 'About' ? (e) => { e.preventDefault(); smoothScrollTo('about'); setIsMenuOpen(false); } : label === 'Become a Tutor' ? (e) => { e.preventDefault(); smoothScrollTo('become-tutor'); setIsMenuOpen(false); } : undefined}
+                      className="block py-2 font-matter font-medium text-sm uppercase tracking-[1px] text-black"
+                    >
+                      {label}
                     </a>
                   ))}
                   <div className="pt-4 flex flex-col gap-3">
                     <a href="https://dashboard.sarvam.ai/" className="w-full">
-                      <button className="relative inline-flex items-center justify-center cursor-pointer font-season-mix font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 active:duration-200 touch-manipulation px-5 py-3 text-base bg-[#131313] text-white shadow-[inset_0_0_12px_rgba(255,255,255,1),0px_0px_2px_0_rgba(0,0,0,0.1)] group w-full text-nowrap">
-                        <span className="absolute inset-0 opacity-0 transition-opacity duration-700 bg-[linear-gradient(90deg,#131313_0%,#0A2156_33%,#BED2FF_66%,#FF8717_100%)] group-hover:opacity-100 group-active:opacity-100 rounded-full shadow-[inset_0px_0px_12px_2px_rgba(255,255,255,0.5)]" style={{ backgroundPosition: '50% 0%', backgroundSize: '200% 100%' }} aria-hidden="true"></span>
-                        <span className="z-10 relative flex items-center gap-2 transition-all duration-500">Get Started</span>
+                      <button className="w-full inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#131313] text-white transition-opacity duration-200 hover:opacity-80 active:scale-95">
+                        Get Started
                       </button>
                     </a>
                     <a href="/contact-us" className="w-full">
-                      <button className="relative inline-flex items-center justify-center cursor-pointer font-season-mix font-medium transition-all duration-500 overflow-hidden rounded-full hover:duration-700 active:scale-95 active:duration-200 touch-manipulation px-5 py-3 text-base bg-sf text-black shadow-[inset_0_0_12px_rgba(0,0,0,0.09),0px_0px_1px_rgba(0,0,0,0.2)] group w-full text-nowrap">
-                        <span className="absolute inset-0 opacity-0 rounded-full transition-opacity duration-700 bg-gradient-to-r from-[#A5BBFC] via-[#D5E2FF] to-[#FFA133] group-hover:opacity-100 group-active:opacity-100 shadow-[inset_0_0_12px_2px_rgba(255,255,255,1)]" style={{ backgroundPosition: '50% 0%', backgroundSize: '200% 100%' }} aria-hidden="true"></span>
-                        <span className="z-10 relative flex items-center gap-2 transition-all duration-500">Login</span>
+                      <button className="w-full inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#f0f0f0] text-black transition-opacity duration-200 hover:opacity-80 active:scale-95">
+                        Login
                       </button>
                     </a>
                   </div>

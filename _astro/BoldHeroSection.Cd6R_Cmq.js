@@ -115,7 +115,7 @@ const v = ({
                     "aria-hidden": "true"
                 }), e.jsx("p", {
                     className: "relative font-matter font-semibold text-sr-indigo-800 text-sm text-center leading-normal tracking-wide",
-                    children: "India's Sovereign AI Platform"
+                    children: "Learn Like Never before  "
                 })]
             }), e.jsxs("div", {
                 className: "flex flex-col items-center gap-2.5 md:gap-3",
@@ -134,11 +134,11 @@ const v = ({
                 "data-animate": "cta",
                 children: e.jsx("a", {
                     href: "https://dashboard.sarvam.ai/",
-                    "aria-label": "Sign in to experience Sarvam",
+                    "aria-label": "Sign in to Get Started",
                     children: e.jsx(d, {
                         variant: "filled",
                         size: "lg",
-                        children: "Experience Sarvam"
+                        children: "Get Started"
                     })
                 })
             })]

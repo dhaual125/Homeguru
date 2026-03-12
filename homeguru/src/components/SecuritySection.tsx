@@ -1,39 +1,38 @@
 export default function SecuritySection() {
-  const badges = [
-    { label: 'Get students directly', icon: null },
-    { label: 'Flexible teaching hours', icon: null },
-    { label: 'On-time payments', icon: null },
-    { label: 'Global reach', icon: null }
-  ];
-
   return (
-    <section className="flex flex-col items-center gap-12 md:gap-16">
-      <h2 className="font-season-mix text-3xl md:text-[36px] text-center leading-[135%] text-tx">
-        Teach. Earn. Grow.
-      </h2>
-
-      <div className="flex md:flex-row flex-wrap justify-center items-center gap-8 md:gap-12 mx-auto w-full">
-        {badges.map((badge, i) => (
-          <div key={i} className="flex flex-col items-center gap-4 w-[200px] md:w-[250px]">
-            <div
-              className="relative flex justify-center items-center rounded-full w-[200px] md:w-[250px] h-[200px] md:h-[250px] bg-sr-indigo-50/50 shadow-[0_0_80px_rgba(165,187,252,0.3),inset_0_0_20px_rgba(165,187,252,0.2)] hover:scale-105 transition-transform duration-300"
-            >
-              {badge.icon ? (
-                <div className="flex flex-col items-center gap-2">
-                  <img
-                    src={badge.icon}
-                    alt={badge.label}
-                    className="w-16 md:w-20 h-auto object-contain mix-blend-multiply"
-                  />
-                  <p className="font-matter font-semibold text-tx text-[14px] md:text-[16px] text-center">{badge.label}</p>
-                </div>
-              ) : (
-                <p className="font-matter font-semibold text-tx text-[16px] md:text-[18px] text-center px-4 leading-tight">{badge.label}</p>
-              )}
-            </div>
-          </div>
-        ))}
+    <section id="become-tutor" className="w-full rounded-[32px] overflow-hidden" style={{ border: '1px solid #0a0a0a' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', minHeight: '500px' }}>
+      {/* Left: image */}
+      <div style={{ overflow: 'hidden', minHeight: '300px' }}>
+        <img
+          src="/tutor.png"
+          alt="Become a Guru"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+        />
       </div>
+
+      {/* Right: content */}
+      <div style={{ backgroundColor: '#F3CD83', padding: 'clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '24px' }}>
+        <h2 style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: '1.1', color: '#0a0a0a', margin: 0 }}>
+          Become a<br />Guru
+        </h2>
+        <p style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, fontSize: '16px', color: '#0a0a0a', lineHeight: '1.6', margin: 0, maxWidth: '380px' }}>
+          Earn money sharing your expert knowledge with students. Sign up to start tutoring online with HomeGuru.
+        </p>
+        <ul style={{ listStyle: 'disc', paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {['Get students directly', 'Flexible teaching hours', 'On-time payments', 'Global reach'].map((item) => (
+            <li key={item} style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, fontSize: '16px', color: '#0a0a0a' }}>{item}</li>
+          ))}
+        </ul>
+        <a href="#become-guru" style={{ marginTop: '8px' }}>
+          <button style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0a0a0a', color: '#fff', fontFamily: 'Matter, sans-serif', fontWeight: 600, fontSize: '16px', padding: '18px 32px', borderRadius: '12px', border: 'none', cursor: 'pointer', opacity: 1, transition: 'opacity 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
+            onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+            Become a Guru →
+          </button>
+        </a>
+      </div>
+    </div>
     </section>
   );
 }

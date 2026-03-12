@@ -1,120 +1,145 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+"use client";
+import { useEffect, useRef } from "react";
+import { Lightning, Brain, BookOpen, ChatCircle } from "@phosphor-icons/react";
+
+const features = [
+  {
+    title: "Instant Session Insights",
+    desc: "Automated recaps with key takeaways, focused review points, and timestamped navigation to jump directly to the most important parts of your lesson."
+  },
+  {
+    title: "Osmium AI Predictive Testing",
+    titleJsx: <><span style={{ color: '#F97316' }}>Osmium AI</span> Predictive Testing</>,
+    desc: "96B parameter LLM built for education — predicts exam patterns, generates adaptive micro-quizzes, and aligns practice with JEE, NEET, CLAT, and more."
+  },
+  {
+    title: "Beyond the Syllabus",
+    desc: "Explore 100+ non-academic subjects for brain breaks, complement studies with Vedic Math, Music, or Yoga, and see how lessons connect to global career paths."
+  },
+];
 
 export default function WhySarvamSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const features = [
-    {
-      id: "attention",
-      title: "1:1 Dedicated Attention",
-      description: "Personalized learning experience tailored to your unique goals and pace."
-    },
-    {
-      id: "Gurus",
-      title: "Verified Gurus",
-      description: "Learn from qualified and experienced Gurus from around the world."
-    },
-    {
-      id: "flexible",
-      title: "Flexible Scheduling",
-      description: "Book sessions that fit your schedule, anytime, anywhere."
-    }
-  ];
+  const cardRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    let current = { scale: 0.5, tx: 20, ty: 40 };
+    let target = { scale: 0.5, tx: 20, ty: 40 };
+    let rafId: number;
 
-    if (sectionRef.current) {
-      const animateElements = sectionRef.current.querySelectorAll("[data-animate]");
-      gsap.fromTo(
-        animateElements,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
-    }
+    const getTarget = () => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight * 0.9)));
+      target.scale = 0.5 + progress * 0.5;
+      target.tx = (1 - progress) * 20;
+      target.ty = (1 - progress) * 40;
+    };
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      current.scale = lerp(current.scale, target.scale, 0.06);
+      current.tx = lerp(current.tx, target.tx, 0.06);
+      current.ty = lerp(current.ty, target.ty, 0.06);
+      if (imgRef.current) {
+        imgRef.current.style.transform = `scale(${current.scale}) translate(${current.tx}%, ${current.ty}%)`;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    getTarget();
+    rafId = requestAnimationFrame(tick);
+    window.addEventListener("scroll", getTarget, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", getTarget);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
-    <div ref={sectionRef} className="flex flex-col items-center gap-8 md:gap-16">
-      <div data-animate className="flex flex-col items-center text-center gap-6 w-full">
+    <div className="flex flex-col items-center gap-6 md:gap-8">
+      <div className="flex flex-col items-center text-center gap-4 w-full">
         <h2 className="font-season-mix text-3xl md:text-[42px] leading-[1.2] text-tx">
-          Not Just Guruing. Personalised Learning.
+          Save <span style={{ color: '#F97316' }}>hours</span>, learn <span style={{ color: '#312E81' }}>smarter</span>.
         </h2>
+        <p className="font-matter text-[#6d6d6d] text-base md:text-lg max-w-xl leading-relaxed">
+          From key takeaways to specific questions, we've got you covered.
+        </p>
       </div>
 
-      <div data-animate className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-4 md:p-6 rounded-[24px] md:rounded-[48px] w-full overflow-hidden border border-st-secondary">
-        <div className="relative rounded-2xl w-full h-[250px] md:h-full min-h-[420px] overflow-hidden shrink-0">
-          <img
-            src="https://assets.sarvam.ai/tr:f-auto/assets/companyLogos/home-section-2.webp"
-            alt="Sarvam AI Platform"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex justify-center items-center">
-            <motion.img
-              src="https://assets.sarvam.ai/assets/svgs/sarvam-logo-white.svg"
-              alt=""
-              className="opacity-90 mb-20 md:mb-36 w-20 md:w-24 h-auto"
-              initial={{ opacity: 0, scale: 0.5, rotate: 90, filter: "blur(5px) brightness(2)" }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px) brightness(1)" }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.25, ease: "easeOut" }}
+      {/* Main Feature Card */}
+      <div
+        ref={cardRef}
+        className="w-full rounded-[32px] border border-[#e7e7e7] bg-[#f6f6f6] overflow-hidden"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '600px' }}>
+          {/* Left: text */}
+          <div className="flex flex-col gap-5 p-10 md:p-16 justify-between pt-12 md:pt-16">
+            <div className="flex flex-col gap-5">
+              <span className="inline-flex items-center justify-center gap-2 w-fit px-3 py-1.5 rounded-full bg-orange-500 border border-orange-500">
+                <span className="font-matter text-xs font-medium text-black uppercase tracking-wide">AI-Powered</span>
+              </span>
+              <h3 className="font-season-mix font-semibold text-[#121212] text-2xl md:text-3xl leading-snug">
+                Instant Session Insights
+              </h3>
+              <ChatCircle size={28} weight="regular" />
+              <p className="font-season-mix text-[#6d6d6d] text-lg md:text-xl leading-relaxed" style={{ fontWeight: 400 }}>
+                Automated recaps with key takeaways, focused review points, and timestamped navigation to jump directly to the most important parts of your lesson.
+              </p>
+            </div>
+            <div className="flex flex-col gap-6">
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-1">
+                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">98%</span>
+                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Recall rate</span>
+                </div>
+                <div className="w-px bg-[#e7e7e7]" />
+                <div className="flex flex-col gap-1">
+                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">3×</span>
+                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Faster review</span>
+                </div>
+                <div className="w-px bg-[#e7e7e7]" />
+                <div className="flex flex-col gap-1">
+                  <span className="font-season-mix font-semibold text-[#121212] text-3xl">24/7</span>
+                  <span className="font-matter text-xs text-[#6d6d6d] uppercase tracking-wide">Available</span>
+                </div>
+              </div>
+              <a href="#" className="w-fit">
+                <button className="inline-flex items-center gap-2 font-matter font-medium text-sm px-5 py-2.5 rounded-full bg-[#131313] text-white hover:opacity-80 transition-opacity">
+                  See how it works →
+                </button>
+              </a>
+            </div>
+          </div>
+
+          {/* Right: image flush to edges */}
+          <div className="relative overflow-hidden" style={{ minHeight: '600px', borderRadius: '24px' }}>
+            <img
+              ref={imgRef as any}
+              src="/videocall.png"
+              alt="Demo"
+              style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', willChange: 'transform', transformOrigin: 'bottom right' }}
             />
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col flex-1 md:justify-between gap-4 md:gap-0 px-4 md:px-12 py-6 md:py-10">
-          {features.map((feature) => (
-            <div key={feature.id} className="flex items-start gap-4">
-              <div className="mt-1 shrink-0">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_i_why)">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M12.0035 0C13.927 1.92336 14.7378 4.55104 14.4269 7.06239C15.3696 6.39209 16.5224 5.99794 17.7672 5.99791H17.9981C17.998 7.2792 17.5948 8.4699 16.9085 9.4474C19.3436 9.12122 21.8977 9.89379 23.7691 11.7651L24 11.996C22.0413 13.9546 19.3522 14.7596 16.7993 14.4011C17.5521 15.4058 17.9984 16.6535 17.9983 18.0015C16.6523 18.0015 15.4063 17.5566 14.4024 16.8059C14.7587 19.3568 13.9535 22.0429 11.9964 23.9999C10.0408 22.0444 9.23528 19.3609 9.58954 16.8117C8.58701 17.5588 7.34402 18.0014 6.00159 18.0014V17.7706C6.00162 16.5237 6.39701 15.3691 7.06934 14.4255C4.55586 14.7387 1.92515 13.9283 0 12.0032L0.230859 11.7723C2.10358 9.89968 4.65997 9.12739 7.09662 9.45536C6.407 8.47643 6.00174 7.28284 6.00176 5.99816C7.3476 5.99814 8.5935 6.44286 9.59732 7.19339C9.24126 4.64272 10.0466 1.95683 12.0035 0ZM11.9994 11.9889C11.9969 11.9927 11.9934 11.9958 11.9891 11.9977C11.9893 11.999 11.9895 12.0004 11.9895 12.0018C11.9938 12.0037 11.9974 12.0069 11.9998 12.0109H12.0004C12.0029 12.007 12.0065 12.0038 12.0108 12.0019C12.0105 12.0005 12.0105 11.9991 12.0104 11.9977C12.0061 11.9958 12.0025 11.9927 12 11.9889H11.9994Z" fill="url(#paint0_linear_why)" />
-                  </g>
-                  <defs>
-                    <filter id="filter0_i_why" x="0" y="0" width="24" height="25" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dy="1" />
-                      <feGaussianBlur stdDeviation="2" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.647059 0 0 0 0 0.733333 0 0 0 0 0.988235 0 0 0 1 0" />
-                      <feBlend mode="normal" in2="shape" result="effect1_innerShadow_why" />
-                    </filter>
-                    <linearGradient id="paint0_linear_why" x1="12" y1="23.9999" x2="12" y2="-3.67886" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#E3F1D8" />
-                      <stop offset="0.33" stopColor="#C8E4B0" />
-                      <stop offset="0.66" stopColor="#83C040" />
-                      <stop offset="1" stopColor="#496D21" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div className="flex flex-col gap-1.5 md:gap-3">
-                <h3 className="font-matter font-medium text-tx md:text-[22px] text-xl leading-normal tracking-[-0.22px]">
-                  {feature.title}
-                </h3>
-                <p className="font-matter text-[#999] text-base leading-normal tracking-[-0.16px]">
-                  {feature.description}
-                </p>
-              </div>
+      {/* 3-card grid */}
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '16px', width: '100%', flexWrap: 'wrap' }}>
+        {features.map((f, i) => (
+          <div key={i} style={{ flex: '1 1 260px', display: 'flex', flexDirection: 'column', gap: '24px', padding: '32px', borderRadius: '24px', backgroundColor: '#f6f6f6' }}>
+            <div style={{ width: '28px', height: '28px', color: '#121212' }}>
+              {i === 0 && <Lightning size={28} weight="regular" />}
+              {i === 1 && <Brain size={28} weight="regular" />}
+              {i === 2 && <BookOpen size={28} weight="regular" />}
             </div>
-          ))}
-        </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <h3 style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, color: '#121212', fontSize: '18px', lineHeight: '1.4', margin: 0 }}>{(f as any).titleJsx ?? f.title}</h3>
+              <p style={{ fontFamily: 'Season Mix, sans-serif', fontWeight: 400, color: '#6d6d6d', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>{f.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

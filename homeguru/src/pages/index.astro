@@ -7,11 +7,12 @@ import WhySarvamSection from '../components/WhySarvamSection';
 import StackLayersNew from '../components/StackLayersNew';
 import PlaygroundShowcase from '../components/PlaygroundShowcase';
 import SecuritySection from '../components/SecuritySection';
-import ApiFeaturesSection from '../components/ApiFeaturesSection';
+import TutorPerks from '../components/TutorPerks';
 import TestimonialSection from '../components/TestimonialSection';
-import ResearchUpdatesSection from '../components/ResearchUpdatesSection';
 import FinalCTA from '../components/FinalCTA';
+import FAQSection from '../components/FAQSection';
 import FooterNew from '../components/FooterNew';
+import AboutSection from '../components/AboutSection';
 ---
 
 <Layout title="HomeGuru | Learn Anything 1 on 1 With the Right Guru.">
@@ -21,39 +22,43 @@ import FooterNew from '../components/FooterNew';
     <div class="flex flex-col gap-32 md:gap-56 mx-auto w-full overflow-x-clip">
       <HeroNew client:load />
       <LogoCarousel client:load />
+
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <AboutSection client:load />
+      </section>
       
       <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
         <WhySarvamSection client:load />
       </section>
-      
-      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
-        <StackLayersNew client:load />
-      </section>
-      
-      {/* Playground / See it in action */}
+
+      {/* Playground / What can you learn */}
       <section class="relative mx-auto w-full">
         <PlaygroundShowcase client:load />
       </section>
-      
+
       <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
-        <SecuritySection client:load />
-      </section>
-      
-      {/* API Features / Built to run anywhere */}
-      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
-        <ApiFeaturesSection client:load />
+        <StackLayersNew client:load />
       </section>
       
       <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
         <TestimonialSection client:load />
       </section>
-      
-      {/* Research & Updates */}
+
       <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
-        <ResearchUpdatesSection client:load />
+        <SecuritySection client:load />
+      </section>
+
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <TutorPerks client:load />
       </section>
       
-      <section class="relative mx-auto mb-10 md:mb-0 w-[85%] md:w-9/12 max-w-[1400px]">
+
+      {/* FAQ */}
+      <section class="relative mx-auto w-[85%] md:w-9/12 max-w-[1400px]">
+        <FAQSection client:load />
+      </section>
+
+      <section class="relative mx-auto mb-16 md:mb-24 w-[85%] md:w-9/12 max-w-[1400px]">
         <FinalCTA client:load />
       </section>
     </div>

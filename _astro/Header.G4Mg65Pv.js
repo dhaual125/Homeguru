@@ -527,13 +527,13 @@ function J() {
                                 onClick: () => {
                                     A("navbar_desktop"), window.location.href = "https://dashboard.sarvam.ai/"
                                 },
-                                children: "Experience Sarvam"
+                                children: "Get Started"
                             }), e.jsx(v, {
                                 variant: "outline",
                                 size: "md",
                                 className: "w-fit text-nowrap",
                                 onClick: () => window.location.href = "/contact-us",
-                                children: "Talk to Sales"
+                                children: "Login"
                             })]
                         })]
                     })
@@ -651,13 +651,13 @@ function J() {
                                         onClick: () => {
                                             A("navbar_mobile"), window.location.href = "https://dashboard.sarvam.ai/"
                                         },
-                                        children: "Experience Sarvam"
+                                        children: "Get Started"
                                     }), e.jsx(v, {
                                         className: "w-full",
                                         variant: "outline",
                                         size: "lg",
                                         onClick: () => window.location.href = "/contact-us",
-                                        children: "Talk to Sales"
+                                        children: "Login"
                                     })]
                                 })
                             })
