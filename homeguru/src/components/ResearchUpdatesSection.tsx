@@ -5,21 +5,21 @@ export default function ResearchUpdatesSection() {
             date: "March 15, 2025",
             category: "EXPANSION",
             link: "#",
-            image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/a781d0105845e4e9b69bf336b842cc8964f38929-1008x630.png?w=400"
+            image: "https://assets.homeguruworld.com/tr:f-auto/images/03117ysv/production/a781d0105845e4e9b69bf336b842cc8964f38929-1008x630.png?w=400"
         },
         {
             title: "Now in United Kingdom",
             date: "March 10, 2025",
             category: "EXPANSION",
             link: "#",
-            image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/fff4fe106a03242dec49bd27025e1b55a51de0b9-1800x1350.png?w=400"
+            image: "https://assets.homeguruworld.com/tr:f-auto/images/03117ysv/production/fff4fe106a03242dec49bd27025e1b55a51de0b9-1800x1350.png?w=400"
         },
         {
             title: "Launching in United States",
             date: "March 5, 2025",
             category: "EXPANSION",
             link: "#",
-            image: "https://assets.sarvam.ai/tr:f-auto/images/03117ysv/production/42d675e333219227dd0a6872d6405088722eb6e1-2400x1800.png?w=400"
+            image: "https://assets.homeguruworld.com/tr:f-auto/images/03117ysv/production/42d675e333219227dd0a6872d6405088722eb6e1-2400x1800.png?w=400"
         }
     ];
 

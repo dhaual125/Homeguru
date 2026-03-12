@@ -30,7 +30,7 @@ const stats = [
   { value: "24/7", label: "Available" },
 ];
 
-export default function WhySarvamSection() {
+export default function WhyHomeGuruSection() {
   const cardRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
 

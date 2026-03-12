@@ -2,21 +2,21 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const logos = [
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-01.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-02.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-03.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-04.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-05.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-06.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-07.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-08.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-09.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-10.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-11.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-12.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-13.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-14.svg',
-  'https://assets.sarvam.ai/assets/prod-samvaad/logos/products/samvaad-logo-15.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-01.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-02.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-03.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-04.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-05.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-06.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-07.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-08.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-09.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-10.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-11.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-12.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-13.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-14.svg',
+  'https://assets.homeguruworld.com/assets/prod-homeguru/logos/products/homeguru-logo-15.svg',
 ];
 
 export default function LogoCarousel() {

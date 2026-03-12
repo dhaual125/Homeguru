@@ -1,7 +1,7 @@
 export default function DeploymentSection() {
   const features = [
     {
-      title: "Sarvam Cloud",
+      title: "HomeGuru Cloud",
       description: "Fully managed, automatic scaling, fastest time-to-value",
       icon: (
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

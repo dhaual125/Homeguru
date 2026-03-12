@@ -68,7 +68,7 @@ export default function Header() {
             </div>
 
             <div className="hidden md:flex flex-1 justify-end items-center gap-3">
-              <a href="https://dashboard.sarvam.ai/">
+              <a href="https://dashboard.homeguruworld.com/">
                 <button className="inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#131313] text-white transition-opacity duration-200 hover:opacity-80 active:scale-95">
                   Get Started
                 </button>
@@ -113,7 +113,7 @@ export default function Header() {
                     </a>
                   ))}
                   <div className="pt-4 flex flex-col gap-3">
-                    <a href="https://dashboard.sarvam.ai/" className="w-full">
+                    <a href="https://dashboard.homeguruworld.com/" className="w-full">
                       <button className="w-full inline-flex items-center justify-center cursor-pointer font-matter font-medium rounded-full px-5 py-2.5 text-sm bg-[#131313] text-white transition-opacity duration-200 hover:opacity-80 active:scale-95">
                         Get Started
                       </button>

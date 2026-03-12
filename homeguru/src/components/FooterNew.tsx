@@ -116,7 +116,7 @@ export default function FooterNew() {
               <ul className="flex flex-col gap-3 w-fit font-matter">
                 <li className="w-fit">
                   <a
-                    href="https://www.linkedin.com/company/sarvam-ai"
+                    href="https://www.linkedin.com/company/homeguru"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -126,7 +126,7 @@ export default function FooterNew() {
                 </li>
                 <li className="w-fit">
                   <a
-                    href="https://x.com/sarvamai"
+                    href="https://x.com/homeguruworld"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -136,7 +136,7 @@ export default function FooterNew() {
                 </li>
                 <li className="w-fit">
                   <a
-                    href="https://youtube.com/@sarvamai"
+                    href="https://youtube.com/@homeguruworld"
                     className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"

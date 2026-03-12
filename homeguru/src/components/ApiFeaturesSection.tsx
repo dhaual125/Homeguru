@@ -46,19 +46,19 @@ export default function ApiFeaturesSection() {
             id: "dashboard",
             title: "Student Dashboard UI",
             description: "Track your progress, manage sessions, and access learning materials",
-            image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-01.png"
+            image: "https://assets.homeguruworld.com/tr:f-auto/assets/prod-homeguru/products/built-for-01.png"
         },
         {
             id: "live-class",
             title: "Live Class Interface",
             description: "Interactive whiteboard, screen sharing, and real-time collaboration",
-            image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-02.png"
+            image: "https://assets.homeguruworld.com/tr:f-auto/assets/prod-homeguru/products/built-for-02.png"
         },
         {
             id: "progress",
             title: "Progress Tracking System",
             description: "Monitor your learning journey with detailed analytics and insights",
-            image: "https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/built-for-03.png"
+            image: "https://assets.homeguruworld.com/tr:f-auto/assets/prod-homeguru/products/built-for-03.png"
         }
     ];
 
@@ -139,7 +139,7 @@ export default function ApiFeaturesSection() {
 
                 <div className="relative flex-1 bg-sf border border-[#f0f0f0] rounded-[20px] md:rounded-[32px] overflow-hidden min-h-[300px] md:min-h-0 flex items-center justify-center p-8">
                     <img
-                        src="https://assets.sarvam.ai/tr:f-auto/assets/prod-samvaad/products/developer-experience.png"
+                        src="https://assets.homeguruworld.com/tr:f-auto/assets/prod-homeguru/products/developer-experience.png"
                         alt="Developer Experience"
                         className="w-full h-auto object-contain"
                     />
