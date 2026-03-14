@@ -127,8 +127,9 @@ export default function FooterNew() {
         <div className="flex md:flex-row flex-col justify-between items-center gap-3 w-full font-matter text-[12px] text-center leading-[1.5]" style={{ color: '#999' }}>
           <span>© 2025 HomeGuru. All rights reserved.</span>
           <span>
-            Made with <span style={{ color: '#F97316' }}>♥</span> in India
+           Made with <span style={{ color: '#F97316' }}>♥</span> at NAVCHETNA
           </span>
+          
         </div>
       </div>
     </footer>
