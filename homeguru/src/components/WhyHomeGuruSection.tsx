@@ -111,10 +111,10 @@ export default function WhyHomeGuruSection() {
 
             {/* Stats row */}
             <div className="flex flex-col gap-6">
-              <div className="flex gap-0">
+              <div className="flex flex-wrap gap-4 md:gap-0">
                 {stats.map((s, i) => (
-                  <div key={i} className="flex flex-col gap-1 pr-8 mr-8" style={{ borderRight: i < stats.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
-                    <span className="font-season-mix text-[32px] md:text-[38px] text-[#111] leading-none tracking-tight">{s.value}</span>
+                  <div key={i} className="flex flex-col gap-1 pr-6 mr-6 md:pr-8 md:mr-8" style={{ borderRight: i < stats.length - 1 ? '1px solid #E0E0E0' : 'none' }}>
+                    <span className="font-season-mix text-[28px] md:text-[38px] text-[#111] leading-none tracking-tight">{s.value}</span>
                     <span className="font-matter text-[11px] uppercase tracking-[2px] text-[#999]">{s.label}</span>
                   </div>
                 ))}
@@ -149,7 +149,7 @@ export default function WhyHomeGuruSection() {
       </div>
 
       {/* ── 3 Feature Cards ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', width: '100%' }}>
+      <div className="hg-feature-grid" style={{ display: 'grid', gap: '16px', width: '100%' }}>
         {features.map((f, i) => {
           const Icon = f.icon;
           return (
@@ -159,13 +159,9 @@ export default function WhyHomeGuruSection() {
               style={{ background: '#F6F6F6', border: '1px solid #EBEBEB' }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.background = '#fff';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(0,0,0,0.06)';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLElement).style.background = '#F6F6F6';
-                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
               }}
             >
               {/* Icon + number */}
@@ -187,6 +183,17 @@ export default function WhyHomeGuruSection() {
           );
         })}
       </div>
+
+      <style>{`
+        .hg-feature-grid {
+          grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+          .hg-feature-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+      `}</style>
     </div>
   );
 }

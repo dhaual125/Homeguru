@@ -1,212 +1,134 @@
 export default function FooterNew() {
   return (
-    <footer className="bottom-0 z-10 relative md:sticky bg-white mx-auto p-10 md:px-16 pt-24 md:pt-24 border-[#e6e6e6] border-t w-screen h-full md:h-fit overflow-hidden pointer-events-auto">
-      <div className="z-100 relative mx-auto pb-40 max-w-width-mx">
+    <footer
+      className="bottom-0 z-10 relative md:sticky mx-auto border-t w-screen overflow-hidden pointer-events-auto"
+      style={{ background: '#fff', borderColor: '#EBEBEB' }}
+    >
+      {/* Warm gradient at bottom */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(ellipse 65% 55% at 50% 100%, rgba(249,115,22,0.06) 0%, transparent 60%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(ellipse 40% 45% at 15% 100%, rgba(139,92,246,0.04) 0%, transparent 50%)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(ellipse 40% 45% at 85% 100%, rgba(59,130,246,0.04) 0%, transparent 50%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div className="relative z-10 mx-auto p-10 md:px-16 pt-20 md:pt-24 pb-10 max-w-width-mx">
+
+        {/* Main grid */}
         <div className="flex lg:flex-row flex-col justify-start md:justify-between items-start gap-16 md:gap-24 lg:gap-[200px] w-full">
-          <div className="flex flex-col gap-6 md:gap-6">
-            <div className="flex flex-col gap-[12px]">
-              <a className="flex items-center" href="/">
-                <span className="text-2xl font-bold text-gray-900">HomeGuru</span>
-              </a>
-              <p className="font-matter font-medium text-[#666] text-[14px] leading-[12px]">
-                Born in India. Built for the World
-              </p>
-            </div>
-            <div className="flex gap-[12px]">
+
+          {/* Brand column */}
+          <div className="flex flex-col gap-5">
+            <a className="flex items-center" href="/">
+              <span style={{ fontSize: '24px', fontWeight: 700, color: '#111', fontFamily: 'Season Mix, sans-serif' }}>
+                Home<span style={{ color: '#F97316' }}>Guru</span>
+              </span>
+            </a>
+            <p className="font-matter text-[14px] leading-[1.5]" style={{ color: '#999' }}>
+              Born in India. Built for the World.
+            </p>
+            {/* Social icons row */}
+            <div className="flex items-center gap-3 mt-2">
+              {[
+                { href: 'https://www.linkedin.com/company/homeguru', label: 'LinkedIn',
+                  path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z' },
+                { href: 'https://x.com/homeguruworld', label: 'X',
+                  path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
+                { href: 'https://youtube.com/@homeguruworld', label: 'YouTube',
+                  path: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.6c1.72.44 8.6.44 8.6.44s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z' },
+              ].map(({ href, label, path }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  style={{
+                    width: '36px', height: '36px',
+                    borderRadius: '10px',
+                    border: '1px solid #E5E7EB',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'border-color 0.2s, background 0.2s',
+                    background: 'transparent',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#F97316'; (e.currentTarget as HTMLElement).style.background = 'rgba(249,115,22,0.04)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#E5E7EB'; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#999"><path d={path} /></svg>
+                </a>
+              ))}
             </div>
           </div>
+
+          {/* Link columns */}
           <div className="justify-center gap-12 md:gap-8 lg:gap-16 grid grid-cols-2 md:grid-cols-4 w-full">
-            <div className="flex flex-col gap-[24px] w-fit">
-              <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                Learn
-              </h3>
-              <ul className="flex flex-col gap-3 w-fit font-matter">
-                <li className="w-fit">
-                  <a
-                    href="#subjects"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Explore Subjects
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="#Gurus"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Find a Guru
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-[24px] w-fit">
-              <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                Teach
-              </h3>
-              <ul className="flex flex-col gap-3 w-fit font-matter">
-                <li className="w-fit">
-                  <a
-                    href="#become-Guru"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Join as a Guru
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-[24px] w-fit">
-              <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                Company
-              </h3>
-              <ul className="flex flex-col gap-3 w-fit font-matter">
-                <li className="w-fit">
-                  <a
-                    href="/about-us"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    About
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/careers"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Careers
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/contact"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Contact
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/support"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Support
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/terms-of-use"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Terms & Conditions
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="/privacy-policy"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-[24px] w-fit">
-              <h3 className="w-fit font-matter font-semibold text-[#3d3d3d] text-[12px] uppercase leading-normal">
-                Socials
-              </h3>
-              <ul className="flex flex-col gap-3 w-fit font-matter">
-                <li className="w-fit">
-                  <a
-                    href="https://www.linkedin.com/company/homeguru"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    LinkedIn
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="https://x.com/homeguruworld"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    X
-                  </a>
-                </li>
-                <li className="w-fit">
-                  <a
-                    href="https://youtube.com/@homeguruworld"
-                    className="block w-fit text-tx-tertiary hover:text-sr-indigo-800 text-base leading-normal transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    YouTube
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {[
+              { title: 'Learn', links: [
+                { label: 'Explore Subjects', href: '#subjects' },
+                { label: 'Find a Guru', href: '#Gurus' },
+                { label: 'Free Demo', href: '#demo' },
+              ]},
+              { title: 'Teach', links: [
+                { label: 'Join as a Guru', href: '#become-Guru' },
+                { label: 'Tutor Dashboard', href: 'https://dashboard.homeguruworld.com/' },
+              ]},
+              { title: 'Company', links: [
+                { label: 'About', href: '/about-us' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Contact', href: '/contact' },
+                { label: 'Support', href: '/support' },
+              ]},
+              { title: 'Legal', links: [
+                { label: 'Terms & Conditions', href: '/terms-of-use' },
+                { label: 'Privacy Policy', href: '/privacy-policy' },
+                { label: 'Refund Policy', href: '/refund-policy' },
+              ]},
+            ].map(col => (
+              <div key={col.title} className="flex flex-col gap-5 w-fit">
+                <h3
+                  className="w-fit font-matter font-semibold text-[11px] uppercase leading-normal"
+                  style={{ color: '#3d3d3d', letterSpacing: '2px' }}
+                >
+                  {col.title}
+                </h3>
+                <ul className="flex flex-col gap-3 w-fit font-matter">
+                  {col.links.map(link => (
+                    <li key={link.label} className="w-fit">
+                      <a
+                        href={link.href}
+                        className="block w-fit text-sm leading-normal transition-colors duration-200"
+                        style={{ color: '#888' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = '#F97316')}
+                        onMouseLeave={e => (e.currentTarget.style.color = '#888')}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-      <div className="bottom-0 left-1/2 z-10 md:absolute relative flex md:flex-row flex-col justify-between items-center gap-3 mx-auto md:p-16 2xl:px-0 py-4 w-full max-w-width-mx font-matter text-[#666] text-[12px] text-center leading-[1.5] -translate-x-1/2">
-        <span>Copyright HomeGuru 2025</span>
-        <span>All rights reserved</span>
-      </div>
-      <div className="absolute inset-0 flex flex-col justify-end items-center mx-auto w-full max-w-width-mx h-full">
-        <div
-          className="relative mx-auto -mb-20 w-full max-w-[1200px] scale-x-[200%] md:scale-x-[100%] scale-y-[300%] md:scale-y-[90%]"
-          style={{ transformOrigin: 'center bottom', opacity: 1, transform: 'scale(1.5)' }}
-        >
-          <svg
-            width="2292"
-            height="833"
-            viewBox="0 0 2292 833"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-          >
-            <g clipPath="url(#clip0_5226_125)">
-              <g filter="url(#filter0_f_5226_125)">
-                <path
-                  d="M1113.5 40C502.673 39.9999 40 793 40 793H2252C2252 793 1724.33 40 1113.5 40Z"
-                  fill="url(#paint0_radial_5226_125)"
-                ></path>
-              </g>
-            </g>
-            <defs>
-              <filter
-                id="filter0_f_5226_125"
-                x="-10"
-                y="-10"
-                width="2312"
-                height="853"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
-                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                <feGaussianBlur stdDeviation="25" result="effect1_foregroundBlur_5226_125"></feGaussianBlur>
-              </filter>
-              <radialGradient
-                id="paint0_radial_5226_125"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientTransform="matrix(0 -1256.51 2148.88 -11.8434 1146 1272)"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0.327754" stopColor="#F9730C"></stop>
-                <stop offset="0.423421" stopColor="#FFA336"></stop>
-                <stop offset="0.536751" stopColor="#F0D5BA"></stop>
-                <stop offset="0.635122" stopColor="#CBDBFF"></stop>
-                <stop offset="1" stopColor="#FAFAFA" stopOpacity="0"></stop>
-              </radialGradient>
-              <clipPath id="clip0_5226_125">
-                <rect width="2292" height="833" fill="white"></rect>
-              </clipPath>
-            </defs>
-          </svg>
+
+        {/* Divider */}
+        <div style={{ height: '1px', background: '#EBEBEB', width: '100%', margin: '48px 0 20px' }} />
+
+        {/* Bottom bar */}
+        <div className="flex md:flex-row flex-col justify-between items-center gap-3 w-full font-matter text-[12px] text-center leading-[1.5]" style={{ color: '#999' }}>
+          <span>© 2025 HomeGuru. All rights reserved.</span>
+          <span>
+            Made with <span style={{ color: '#F97316' }}>♥</span> in India
+          </span>
         </div>
       </div>
     </footer>

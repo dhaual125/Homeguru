@@ -35,9 +35,11 @@ export default function Header() {
         }}
       >
         <div
-          className="rounded-b-xl overflow-hidden"
+          className="rounded-b-xl overflow-hidden transition-all duration-300"
           style={{
-            backgroundColor: `rgba(255, 255, 255, ${scrollProgress})`,
+            backgroundColor: `rgba(255, 255, 255, ${scrollProgress * 0.50})`,
+            backdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 12}px)` : 'none',
+            WebkitBackdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 12}px)` : 'none',
             borderBottomWidth: scrollProgress > 0 ? "1px" : "0px",
             borderBottomStyle: "solid",
             borderBottomColor: `rgba(240, 240, 240, ${scrollProgress})`

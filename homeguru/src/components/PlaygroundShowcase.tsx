@@ -1,238 +1,281 @@
 import { useState } from 'react';
+import { FollowerPointerCard } from '@/components/ui/following-pointer';
 import { PointerHighlight } from '@/components/ui/pointer-highlight';
 
-const subjects = [
-  {
-    img: '/math.png',
-    type: 'Mathematics',
-    tutors: '120+',
-    num: '01',
-    accent: 'rgba(249, 115, 22, 0.18)',   // warm amber
-    accentStrong: 'rgba(249, 115, 22, 0.35)',
-  },
-  {
-    img: '/science.png',
-    type: 'Science',
-    tutors: '95+',
-    num: '02',
-    accent: 'rgba(20, 184, 166, 0.15)',   // teal
-    accentStrong: 'rgba(20, 184, 166, 0.3)',
-  },
-  {
-    img: '/english.png',
-    type: 'English',
-    tutors: '80+',
-    num: '03',
-    accent: 'rgba(99, 102, 241, 0.15)',   // indigo
-    accentStrong: 'rgba(99, 102, 241, 0.3)',
-  },
-];
+type Topic = { name: string; subject: string; color: string };
 
-const tabs = ['School Subjects', 'Coding & AI', 'Music & Dance', 'Languages', 'Exams'];
+// ── Actual learning topics students will learn ─────────────────────────────
+const CATEGORIES: Record<string, { row1: Topic[]; row2: Topic[] }> = {
+  'Academic': {
+    row1: [
+      { name: 'Calculus & Derivatives',     subject: 'Maths',      color: '#6366F1' },
+      { name: 'Organic Chemistry',          subject: 'Chemistry',  color: '#10B981' },
+      { name: 'Thermodynamics',             subject: 'Physics',    color: '#3B82F6' },
+      { name: 'Cell Biology & Genetics',    subject: 'Biology',    color: '#22C55E' },
+      { name: 'Indian Freedom Movement',    subject: 'History',    color: '#A855F7' },
+      { name: 'Linear Algebra',             subject: 'Maths',      color: '#6366F1' },
+      { name: 'Climate & Weather Systems',  subject: 'Geography',  color: '#14B8A6' },
+    ],
+    row2: [
+      { name: 'Probability & Statistics',   subject: 'Maths',      color: '#8B5CF6' },
+      { name: 'Demand & Supply Analysis',   subject: 'Economics',  color: '#F59E0B' },
+      { name: 'Double Entry Bookkeeping',   subject: 'Accountancy',color: '#EF4444' },
+      { name: 'Data Structures & Algorithms',subject: 'CS',        color: '#6366F1' },
+      { name: 'The Indian Constitution',    subject: 'Pol. Sci.',  color: '#8B5CF6' },
+      { name: 'Periodic Table & Bonding',   subject: 'Chemistry',  color: '#10B981' },
+      { name: 'Electromagnetic Waves',      subject: 'Physics',    color: '#3B82F6' },
+    ],
+  },
+  'Coding & AI': {
+    row1: [
+      { name: 'Python for Beginners',       subject: 'Python',     color: '#3B82F6' },
+      { name: 'React & Component Design',   subject: 'JavaScript', color: '#EAB308' },
+      { name: 'Neural Networks from Scratch',subject: 'ML',        color: '#8B5CF6' },
+      { name: 'SQL Joins & Queries',        subject: 'Databases',  color: '#F59E0B' },
+      { name: 'REST API Development',       subject: 'Backend',    color: '#F97316' },
+      { name: 'Git & Version Control',      subject: 'DevOps',     color: '#EF4444' },
+    ],
+    row2: [
+      { name: 'Object-Oriented Programming',subject: 'Java',       color: '#EF4444' },
+      { name: 'Pandas & Data Wrangling',    subject: 'Data Sci.',  color: '#6366F1' },
+      { name: 'CSS Grid & Flexbox',         subject: 'Frontend',   color: '#06B6D4' },
+      { name: 'TensorFlow & Keras',         subject: 'Deep Learning',color: '#A855F7' },
+      { name: 'Flutter Mobile Apps',        subject: 'App Dev',    color: '#10B981' },
+      { name: 'Linux & Shell Scripting',    subject: 'Sysadmin',   color: '#3B82F6' },
+    ],
+  },
+  'Music & Dance': {
+    row1: [
+      { name: 'Fingerstyle Guitar',         subject: 'Guitar',     color: '#F97316' },
+      { name: 'Sight Reading & Scales',     subject: 'Piano',      color: '#6366F1' },
+      { name: 'Raga Fundamentals',          subject: 'Vocal',      color: '#EC4899' },
+      { name: 'Bowing Techniques',          subject: 'Violin',     color: '#8B5CF6' },
+      { name: 'Rhythm & Beat Patterns',     subject: 'Drums',      color: '#EF4444' },
+      { name: 'Taal & Composition',         subject: 'Tabla',      color: '#F59E0B' },
+    ],
+    row2: [
+      { name: 'Adavus & Mudras',            subject: 'Bharatanatyam',color: '#D946EF' },
+      { name: 'Kathak Tatkaar',             subject: 'Kathak',     color: '#EC4899' },
+      { name: 'Popping & Locking',          subject: 'Hip Hop',    color: '#3B82F6' },
+      { name: 'Ableton & FL Studio',        subject: 'Production', color: '#14B8A6' },
+      { name: 'Carnatic Notation',          subject: 'Flute',      color: '#10B981' },
+      { name: 'Sargam & Alankaar',          subject: 'Classical',  color: '#A855F7' },
+    ],
+  },
+  'Languages': {
+    row1: [
+      { name: 'IELTS Writing Task 2',       subject: 'English',    color: '#3B82F6' },
+      { name: 'Hindi Vyakaran & Sahitya',   subject: 'Hindi',      color: '#F97316' },
+      { name: 'French Conversational A2',   subject: 'French',     color: '#EF4444' },
+      { name: 'Spanish Verb Conjugation',   subject: 'Spanish',    color: '#F59E0B' },
+      { name: 'German Grammar B1',          subject: 'German',     color: '#6366F1' },
+      { name: 'JLPT N5 Kanji',             subject: 'Japanese',   color: '#EC4899' },
+    ],
+    row2: [
+      { name: 'HSK Level 3 Vocabulary',     subject: 'Mandarin',   color: '#EF4444' },
+      { name: 'Hangul & Basic Sentences',   subject: 'Korean',     color: '#8B5CF6' },
+      { name: 'Sanskrit Shloka Reading',    subject: 'Sanskrit',   color: '#F59E0B' },
+      { name: 'Arabic Script & Basics',     subject: 'Arabic',     color: '#10B981' },
+      { name: 'Tamil Prose & Poetry',       subject: 'Tamil',      color: '#D946EF' },
+      { name: 'Business English Speaking',  subject: 'English',    color: '#3B82F6' },
+    ],
+  },
+  'Exams': {
+    row1: [
+      { name: 'JEE Coordinate Geometry',    subject: 'JEE',        color: '#6366F1' },
+      { name: 'NEET Human Physiology',      subject: 'NEET',       color: '#10B981' },
+      { name: 'UPSC Modern History',        subject: 'UPSC',       color: '#F59E0B' },
+      { name: 'CAT Quantitative Aptitude',  subject: 'CAT',        color: '#3B82F6' },
+      { name: 'CLAT Legal Reasoning',       subject: 'CLAT',       color: '#8B5CF6' },
+      { name: 'SAT Critical Reading',       subject: 'SAT',        color: '#EF4444' },
+    ],
+    row2: [
+      { name: 'GATE Signal Processing',     subject: 'GATE',       color: '#3B82F6' },
+      { name: 'IELTS Listening Practice',   subject: 'IELTS',      color: '#14B8A6' },
+      { name: 'NDA Maths & GAT',            subject: 'NDA',        color: '#F97316' },
+      { name: 'CA Accounting Standards',    subject: 'CA',         color: '#F59E0B' },
+      { name: 'Olympiad Number Theory',     subject: 'Olympiad',   color: '#A855F7' },
+      { name: 'CUET English & GK',          subject: 'CUET',       color: '#EC4899' },
+    ],
+  },
+};
 
-// ─── Individual Card ────────────────────────────────────────────────────────
-const SubjectCard = ({
-  motif,
-  tall = false,
+const TABS = Object.keys(CATEGORIES);
+
+// ── Topic Chip ─────────────────────────────────────────────────────────────
+function TopicChip({
+  topic,
+  onEnter,
+  onLeave,
 }: {
-  motif: typeof subjects[0];
-  tall?: boolean;
-}) => {
+  topic: Topic;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a
-      href="#find-tutor"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+    <div
+      onMouseEnter={() => { setHovered(true); onEnter(); }}
+      onMouseLeave={() => { setHovered(false); onLeave(); }}
       style={{
         position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        overflow: 'hidden',
-        borderRadius: '28px',
-        background: '#0C0C0C',
-        border: '1px solid rgba(255,255,255,0.07)',
-        gridRow: tall ? 'span 2' : 'span 1',
-        minHeight: tall ? '520px' : '240px',
-        cursor: 'pointer',
-        textDecoration: 'none',
-        transition: 'transform 0.45s cubic-bezier(0.23,1,0.32,1), box-shadow 0.45s ease',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered ? '0 24px 48px rgba(0,0,0,0.45)' : '0 2px 8px rgba(0,0,0,0.2)',
+        zIndex: hovered ? 20 : 1,
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '10px',
+        padding: '14px 26px',
+        borderRadius: '9999px',
+        border: `1px solid ${hovered ? '#D1D5DB' : 'rgba(0,0,0,0.06)'}`,
+        background: hovered ? '#fff' : '#FAFAFA',
+        cursor: 'none',
+        userSelect: 'none',
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
+        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
+        transition:
+          'border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
       }}
     >
-      {/* Full-bleed image — full opacity, no mask */}
-      <img
-        src={motif.img}
-        alt={motif.type}
+      {/* Colored dot */}
+      <span
         style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center top',
-          transform: hovered ? 'scale(1.05)' : 'scale(1)',
-          transition: 'transform 0.8s cubic-bezier(0.23,1,0.32,1)',
+          display: 'inline-block',
+          width: '7px',
+          height: '7px',
+          borderRadius: '50%',
+          flexShrink: 0,
+          background: topic.color,
         }}
       />
-
-      {/* Scrim — only at the bottom for text legibility, not a black shadow */}
-      <div
+      {/* Topic name */}
+      <span
         style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 40%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Per-subject accent glow — sits on top of scrim */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '45%',
-          background: `radial-gradient(ellipse 80% 60% at 50% 100%, ${hovered ? motif.accentStrong : motif.accent}, transparent 70%)`,
-          pointerEvents: 'none',
-          transition: 'background 0.4s ease',
-        }}
-      />
-
-      {/* Ghost number — large typographic accent */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '16px',
-          right: '20px',
-          fontFamily: "'Season Mix', sans-serif",
-          fontSize: tall ? '120px' : '72px',
+          fontFamily: 'Matter, sans-serif',
+          fontSize: '14.5px',
+          fontWeight: 500,
           lineHeight: 1,
-          color: 'rgba(255,255,255,0.04)',
-          userSelect: 'none',
-          pointerEvents: 'none',
-          letterSpacing: '-0.04em',
+          color: '#1F2937',
         }}
       >
-        {motif.num}
-      </div>
+        {topic.name}
+      </span>
+      {/* Subject tag */}
+      <span
+        style={{
+          fontFamily: 'Matter, sans-serif',
+          fontSize: '11px',
+          fontWeight: 500,
+          lineHeight: 1,
+          color: '#9CA3AF',
+          paddingLeft: '2px',
+        }}
+      >
+        {topic.subject}
+      </span>
+    </div>
+  );
+}
 
-      {/* Bottom content */}
+// ── Marquee Row ────────────────────────────────────────────────────────────
+function MarqueeRow({
+  topics,
+  direction,
+  paused,
+  onEnter,
+  onLeave,
+  speed = 46,
+}: {
+  topics: Topic[];
+  direction: 'left' | 'right';
+  paused: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+  speed?: number;
+}) {
+  const anim = direction === 'left' ? 'hgMqL' : 'hgMqR';
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        overflowX: 'clip' as any,
+        overflowY: 'visible',
+        width: '100%',
+        paddingTop: '12px',
+        paddingBottom: '12px',
+      }}
+    >
+      {/* Edge fades */}
       <div
         style={{
-          position: 'relative',
-          zIndex: 10,
-          padding: tall ? '32px 28px' : '20px 22px',
+          position: 'absolute',
+          inset: 0,
+          zIndex: 15,
+          background:
+            'linear-gradient(to right, #fafafa 0%, transparent 7%, transparent 93%, #fafafa 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: '6px',
+          gap: '10px',
+          width: 'fit-content',
+          animation: `${anim} ${speed}s linear infinite`,
+          animationPlayState: paused ? 'paused' : 'running',
+          willChange: 'transform',
         }}
       >
-        {/* Tutor count pill */}
-        <span
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            width: 'fit-content',
-            padding: '3px 10px',
-            borderRadius: '9999px',
-            background: 'rgba(255,255,255,0.08)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            fontFamily: 'Matter, sans-serif',
-            fontSize: '11px',
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.55)',
-            letterSpacing: '0.3px',
-            marginBottom: '4px',
-          }}
-        >
-          <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
-          {motif.tutors} tutors available
-        </span>
-
-        {/* Subject name */}
-        <h3
-          style={{
-            fontFamily: "'Season Mix', sans-serif",
-            fontSize: tall ? '38px' : '24px',
-            color: '#fff',
-            lineHeight: 1.05,
-            letterSpacing: '-0.02em',
-            margin: 0,
-          }}
-        >
-          {motif.type}
-        </h3>
-
-        {/* Explore link */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            fontFamily: 'Matter, sans-serif',
-            fontSize: '13px',
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.45)',
-            marginTop: '4px',
-            transition: 'color 0.2s',
-            ...(hovered ? { color: 'rgba(255,255,255,0.9)' } : {}),
-          }}
-        >
-          Explore
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            style={{
-              transform: hovered ? 'translate(2px, -2px)' : 'translate(0,0)',
-              transition: 'transform 0.25s ease',
-            }}
-          >
-            <path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
+        {[...topics, ...topics].map((t, i) => (
+          <TopicChip
+            key={`${t.name}-${i}`}
+            topic={t}
+            onEnter={onEnter}
+            onLeave={onLeave}
+          />
+        ))}
       </div>
-    </a>
+    </div>
   );
-};
+}
 
-// ─── Main Component ──────────────────────────────────────────────────────────
+// ── Main Component ─────────────────────────────────────────────────────────
 export default function PlaygroundShowcase() {
   const [activeTab, setActiveTab] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleEnter = () => setIsHovering(true);
+  const handleLeave = () => setIsHovering(false);
+
+  const currentCat = CATEGORIES[TABS[activeTab]];
 
   return (
     <section style={{ position: 'relative', width: '100%', padding: '80px 0' }}>
       <div
         style={{
-          position: 'relative',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '48px',
+          gap: '40px',
           margin: '0 auto',
           width: '90%',
           maxWidth: '1400px',
         }}
       >
-        {/* ── Section Heading ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '16px', width: '100%' }}>
+        {/* ── Heading ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '14px' }}>
           <h2
             style={{
               fontFamily: "'Season Mix', sans-serif",
-              fontSize: 'clamp(28px, 4vw, 42px)',
+              fontSize: 'clamp(30px, 4vw, 44px)',
               color: '#111',
-              lineHeight: 1.2,
+              lineHeight: 1.15,
               margin: 0,
               display: 'flex',
               alignItems: 'center',
-              gap: '12px',
+              gap: '10px',
               flexWrap: 'wrap',
               justifyContent: 'center',
             }}
@@ -246,10 +289,14 @@ export default function PlaygroundShowcase() {
               <span style={{ color: '#F97316', position: 'relative', zIndex: 10 }}>Learn?</span>
             </PointerHighlight>
           </h2>
+          <p style={{ fontFamily: 'Matter, sans-serif', fontSize: '15px', color: '#9CA3AF', margin: 0, lineHeight: 1.65, maxWidth: '480px' }}>
+            Real topics, real tutors — explore what students are learning right now.
+          </p>
         </div>
 
-        {/* ── Tab Pills — connected pill group ── */}
+        {/* ── Category Tabs ── */}
         <div
+          className="hg-tabs-scroll"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -259,104 +306,80 @@ export default function PlaygroundShowcase() {
             gap: '2px',
             overflowX: 'auto',
             scrollbarWidth: 'none',
+            maxWidth: '100%',
           }}
         >
-          {tabs.map((tab, i) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(i)}
-              style={{
-                flexShrink: 0,
-                padding: '8px 20px',
-                borderRadius: '9999px',
-                fontFamily: 'Matter, sans-serif',
-                fontWeight: 500,
-                fontSize: '13px',
-                cursor: 'pointer',
-                border: 'none',
-                whiteSpace: 'nowrap',
-                transition: 'background 0.2s, color 0.2s, box-shadow 0.2s',
-                background: activeTab === i ? '#fff' : 'transparent',
-                color: activeTab === i ? '#111' : '#888',
-                boxShadow: activeTab === i ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
-              }}
-            >
-              {tab}
-            </button>
-          ))}
+          {TABS.map((tab, i) => {
+            const active = activeTab === i;
+            return (
+              <button
+                key={tab}
+                onClick={() => { setActiveTab(i); setIsHovering(false); }}
+                style={{
+                  flexShrink: 0,
+                  padding: '9px 22px',
+                  borderRadius: '9999px',
+                  fontFamily: 'Matter, sans-serif',
+                  fontWeight: active ? 600 : 400,
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                  border: 'none',
+                  whiteSpace: 'nowrap',
+                  transition: 'background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease',
+                  background: active ? '#fff' : 'transparent',
+                  color: active ? '#111' : '#888',
+                  boxShadow: active ? '0 1px 6px rgba(0,0,0,0.10)' : 'none',
+                }}
+              >
+                {tab}
+              </button>
+            );
+          })}
         </div>
 
-        {/* ── Tab Content ── */}
-        {activeTab === 0 ? (
-          /* Asymmetric bento grid: col 1 = tall card, col 2 = 2 stacked cards */
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gridTemplateRows: 'auto auto',
-              gap: '16px',
-              width: '100%',
-            }}
-            className="bento-grid-lg"
-          >
-            <SubjectCard motif={subjects[0]} tall />
-            <SubjectCard motif={subjects[1]} />
-            <SubjectCard motif={subjects[2]} />
-          </div>
-        ) : (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: '320px',
-              width: '100%',
-              background: '#FAFAFA',
-              border: '1px solid #EBEBEB',
-              borderRadius: '32px',
-              gap: '12px',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'Matter, sans-serif',
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                color: '#F97316',
-              }}
+        {/* ── Marquee Content ── */}
+        <div style={{ width: '100%' }}>
+          <FollowerPointerCard title="Explore" key={activeTab}>
+            <div
+              onMouseLeave={handleLeave}
+              style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}
             >
-              Coming Soon
-            </span>
-            <p
-              style={{
-                fontFamily: 'Matter, sans-serif',
-                color: '#999',
-                fontSize: '15px',
-                maxWidth: '320px',
-                textAlign: 'center',
-                lineHeight: 1.6,
-                margin: 0,
-              }}
-            >
-              {tabs[activeTab]} tutors are being onboarded. Check back soon.
-            </p>
-          </div>
-        )}
+              <MarqueeRow
+                topics={currentCat.row1}
+                direction="left"
+                paused={isHovering}
+                onEnter={handleEnter}
+                onLeave={handleLeave}
+                speed={50}
+              />
+              <MarqueeRow
+                topics={currentCat.row2}
+                direction="right"
+                paused={isHovering}
+                onEnter={handleEnter}
+                onLeave={handleLeave}
+                speed={42}
+              />
+            </div>
+          </FollowerPointerCard>
+        </div>
       </div>
 
       <style>{`
-        @media (min-width: 768px) {
-          .bento-grid-lg {
-            grid-template-columns: 1fr 1fr !important;
-          }
+        .hg-tabs-scroll::-webkit-scrollbar {
+          display: none;
         }
-        @media (max-width: 767px) {
-          .bento-grid-lg {
-            grid-template-columns: 1fr !important;
-          }
+        .hg-tabs-scroll {
+          -ms-overflow-style: none;
+          -webkit-overflow-scrolling: touch;
+        }
+        @keyframes hgMqL {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes hgMqR {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
         }
       `}</style>
     </section>

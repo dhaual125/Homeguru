@@ -91,11 +91,11 @@ export default function HeroNew() {
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="flex items-center gap-2 border border-gray-200 bg-white shadow-sm rounded-full px-3 py-1.5"
+              className="flex items-center gap-2.5 border border-gray-200 bg-white shadow-sm rounded-full px-4 py-2"
             >
-              <div className="flex items-center justify-center bg-orange-500 text-white rounded w-4 h-4 text-[10px] font-bold">H</div>
-              <p className="font-matter font-medium text-gray-500 text-xs tracking-wide">
-                Learn Like Never before
+              <div className="flex items-center justify-center bg-orange-500 text-white rounded w-4 h-4 text-[10px] font-bold">✦</div>
+              <p className="font-matter font-medium text-gray-500 text-xs tracking-wide" style={{ whiteSpace: 'nowrap' }}>
+                India's <span style={{ color: '#111', fontWeight: 600 }}>#1</span> 1-on-1 Tutoring Platform
               </p>
             </div>
 
@@ -185,6 +185,11 @@ export default function HeroNew() {
       </div>
 
 
+      <style>{`
+        @keyframes livePing {
+          75%, 100% { transform: scale(2.4); opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 }

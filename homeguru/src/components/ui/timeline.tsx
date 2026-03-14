@@ -43,13 +43,13 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div ref={containerRef} style={{ width: '100%' }}>
       <div ref={ref} style={{ position: 'relative', maxWidth: '80rem', margin: '0 auto', paddingBottom: '5rem' }}>
         {data.map((item, index) => (
-          <div key={index} style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: '5rem', gap: '2.5rem' }}>
+          <div key={index} className="hg-tl-row">
             {/* Left: dot + label */}
-            <div style={{ position: 'sticky', top: '10rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', zIndex: 40, minWidth: '120px', maxWidth: '200px' }}>
+            <div className="hg-tl-label">
               <div style={{ position: 'absolute', left: 0, width: '2.5rem', height: '2.5rem', borderRadius: '50%', background: '#fff', border: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <div style={{ width: '0.75rem', height: '0.75rem', borderRadius: '50%', backgroundColor: ['#F9730C','#F0D5BA','#312E81'][index] }} />
               </div>
-              <h3 style={{ paddingLeft: '3.5rem', fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, color: '#d1d5db', fontFamily: 'Season Mix, sans-serif' }}>
+              <h3 style={{ paddingLeft: '3.5rem', fontSize: 'clamp(1.25rem, 3vw, 2.5rem)', fontWeight: 700, color: '#d1d5db', fontFamily: 'Season Mix, sans-serif' }}>
                 {item.title}
               </h3>
             </div>
@@ -63,7 +63,8 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {/* Track line */}
         <div style={{
           position: 'absolute',
-          left: '1.15rem',
+          left: '1.25rem', // Center of the 2.5rem dot
+          transform: 'translateX(-50%)', // perfect center
           top: 0,
           width: '2px',
           height: height + 'px',
@@ -83,6 +84,37 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           }} />
         </div>
       </div>
+
+      <style>{`
+        .hg-tl-row {
+          display: flex;
+          justify-content: flex-start;
+          padding-top: 3rem;
+          gap: 1.5rem;
+        }
+        .hg-tl-label {
+          position: sticky;
+          top: 6rem;
+          align-self: flex-start;
+          display: flex;
+          align-items: center;
+          z-index: 40;
+          min-width: 80px;
+          max-width: 120px;
+          margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+          .hg-tl-row {
+            padding-top: 5rem;
+            gap: 2.5rem;
+          }
+          .hg-tl-label {
+            top: 10rem;
+            min-width: 120px;
+            max-width: 200px;
+          }
+        }
+      `}</style>
     </div>
   );
 };
