@@ -39,12 +39,18 @@ export default function FooterNew() {
             {/* Social icons row */}
             <div className="flex items-center gap-3 mt-2">
               {[
-                { href: 'https://www.linkedin.com/company/homeguru', label: 'LinkedIn',
-                  path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z' },
-                { href: 'https://x.com/homeguruworld', label: 'X',
-                  path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
-                { href: 'https://youtube.com/@homeguruworld', label: 'YouTube',
-                  path: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.6c1.72.44 8.6.44 8.6.44s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z' },
+                {
+                  href: 'https://www.linkedin.com/company/homeguru', label: 'LinkedIn',
+                  path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z'
+                },
+                {
+                  href: 'https://x.com/homeguruworld', label: 'X',
+                  path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'
+                },
+                {
+                  href: 'https://youtube.com/@homeguruworld', label: 'YouTube',
+                  path: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.6c1.72.44 8.6.44 8.6.44s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.94A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z'
+                },
               ].map(({ href, label, path }) => (
                 <a
                   key={label}
@@ -72,26 +78,34 @@ export default function FooterNew() {
           {/* Link columns */}
           <div className="justify-center gap-12 md:gap-8 lg:gap-16 grid grid-cols-2 md:grid-cols-4 w-full">
             {[
-              { title: 'Learn', links: [
-                { label: 'Explore Subjects', href: '#subjects' },
-                { label: 'Find a Guru', href: '#Gurus' },
-                { label: 'Free Demo', href: '#demo' },
-              ]},
-              { title: 'Teach', links: [
-                { label: 'Join as a Guru', href: '#become-Guru' },
-                { label: 'Tutor Dashboard', href: 'https://dashboard.homeguruworld.com/' },
-              ]},
-              { title: 'Company', links: [
-                { label: 'About', href: '/about-us' },
-                { label: 'Careers', href: '/careers' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Support', href: '/support' },
-              ]},
-              { title: 'Legal', links: [
-                { label: 'Terms & Conditions', href: '/terms-of-use' },
-                { label: 'Privacy Policy', href: '/privacy-policy' },
-                { label: 'Refund Policy', href: '/refund-policy' },
-              ]},
+              {
+                title: 'Learn', links: [
+                  { label: 'Explore Subjects', href: '#subjects' },
+                  { label: 'Find a Guru', href: '#Gurus' },
+                  { label: 'Free Demo', href: '#demo' },
+                ]
+              },
+              {
+                title: 'Teach', links: [
+                  { label: 'Join as a Guru', href: '#become-Guru' },
+                  { label: 'Tutor Dashboard', href: 'https://dashboard.homeguruworld.com/' },
+                ]
+              },
+              {
+                title: 'Company', links: [
+                  { label: 'About', href: '/about-us' },
+                  { label: 'Careers', href: '/careers' },
+                  { label: 'Contact', href: '/contact' },
+                  { label: 'Support', href: '/support' },
+                ]
+              },
+              {
+                title: 'Legal', links: [
+                  { label: 'Terms & Conditions', href: '/terms-of-use' },
+                  { label: 'Privacy Policy', href: '/privacy-policy' },
+                  { label: 'Refund Policy', href: '/refund-policy' },
+                ]
+              },
             ].map(col => (
               <div key={col.title} className="flex flex-col gap-5 w-fit">
                 <h3
@@ -127,9 +141,9 @@ export default function FooterNew() {
         <div className="flex md:flex-row flex-col justify-between items-center gap-3 w-full font-matter text-[12px] text-center leading-[1.5]" style={{ color: '#999' }}>
           <span>© 2025 HomeGuru. All rights reserved.</span>
           <span>
-           Made with <span style={{ color: '#F97316' }}>♥</span> at NAVCHETNA
+            Made with <span style={{ color: '#F97316' }}>♥</span> at NAVCHETNA
           </span>
-          
+
         </div>
       </div>
     </footer>

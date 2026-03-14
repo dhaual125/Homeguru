@@ -37,12 +37,12 @@ export default function Header() {
         <div
           className="rounded-b-xl overflow-hidden transition-all duration-300"
           style={{
-            backgroundColor: `rgba(255, 255, 255, ${scrollProgress * 0.50})`,
-            backdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 12}px)` : 'none',
-            WebkitBackdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 12}px)` : 'none',
-            borderBottomWidth: scrollProgress > 0 ? "1px" : "0px",
+            backgroundColor: `rgba(255, 255, 255, ${0.50 + (scrollProgress * 0.50)})`,
+            backdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 16}px)` : 'blur(8px)',
+            WebkitBackdropFilter: scrollProgress > 0 ? `blur(${scrollProgress * 16}px)` : 'blur(8px)',
+            borderBottomWidth: "1px",
             borderBottomStyle: "solid",
-            borderBottomColor: `rgba(240, 240, 240, ${scrollProgress})`
+            borderBottomColor: `rgba(240, 240, 240, ${0.5 + (scrollProgress * 0.5)})`
           }}
         >
           <nav className="flex justify-between items-center py-3 pr-4 pl-6 w-full mx-auto max-w-width-mx">
